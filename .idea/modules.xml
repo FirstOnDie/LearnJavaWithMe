@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DDDEstructure/DDDEstructure.iml" filepath="$PROJECT_DIR$/DDDEstructure/DDDEstructure.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Develop.iml" filepath="$PROJECT_DIR$/.idea/Develop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HexagonalEstructure/HexagonalEstructure.iml" filepath="$PROJECT_DIR$/HexagonalEstructure/HexagonalEstructure.iml" />
     </modules>
   </component>
 </project>
