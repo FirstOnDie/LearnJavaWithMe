@@ -5,3 +5,6 @@
 Empecé a programar con 14 años por curiosidad y ya son mas de 20 años dentro del sector, he convertido mi hobby en mi profesión y me encanta enseñar a los demás.
 
 Aquí encontrarás ejemplos que he creado para mis alumnos y amigos que me han pedido ayuda, espero que te sean de utilidad.
+
+- [Estructura DDD](DDDEstructure)
+- [Estructura Hexagonal](HexagonalEstructure)
