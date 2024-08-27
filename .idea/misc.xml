@@ -4,6 +4,14 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/DDDEstructure" />
     <file type="web" url="file://$PROJECT_DIR$/HexagonalEstructure" />
+    <file type="web" url="file://$PROJECT_DIR$/MultiThreading" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Authentication-Authorization/pom.xml" />
+      </list>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
