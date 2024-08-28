@@ -61,7 +61,9 @@ class Perro extends Animal {
 }
 ```
 **Explicación más detallada:**
+
 Aquí tenemos una clase llamada `Animal` que tiene un método llamado `hacerSonido`. Luego tenemos una clase llamada `Perro` que extiende (o hereda de) `Animal`. En `Perro`, usamos `@Override` para decir: "Voy a hacer mi propia versión del método `hacerSonido`". Así que cuando llamamos al método `hacerSonido` en un `Perro`, en lugar de hacer un sonido genérico, el perro ladra "Guau".
+
 ---
 ### @Deprecated
 **¿Qué hace?**
@@ -82,7 +84,9 @@ class Calculadora {
 }
 ```
 **Explicación más detallada:**
-En este ejemplo, tenemos una clase `Calculadora` con dos métodos para sumar números. El método `sumarViejo` está marcado con `@Deprecated`, lo que significa que este método es viejo y hay una mejor manera de hacer lo mismo, que es el método `sumar`. Si alguien intenta usar `sumarViejo`, verá una advertencia de que debería usar el nuevo método `sumar` en su lugar.
+
+En este ejemplo, tenemos una clase`Calculadora` con dos métodos para sumar números. El método `sumarViejo` está marcado con `@Deprecated`, lo que significa que este método es viejo y hay una mejor manera de hacer lo mismo, que es el método `sumar`. Si alguien intenta usar `sumarViejo`, verá una advertencia de que debería usar el nuevo método `sumar` en su lugar.
+
 ---
 ### @SuppressWarnings
 **¿Qué hace?**
@@ -99,7 +103,9 @@ public class Main {
 }
 ```
 **Explicación más detallada:**
+
 Supongamos que tienes un código que funciona bien, pero que genera una advertencia innecesaria. Puedes usar `@SuppressWarnings("unchecked")` para decirle a Java que ignore esa advertencia específica. Es como decirle a Java: "¡No te preocupes por esto, sé lo que estoy haciendo!".
+
 ---
 ### @SafeVarargs
 **¿Qué hace?**
@@ -118,7 +124,9 @@ public class Main {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, el método `imprimir` puede tomar una cantidad variable de argumentos (como una lista de cosas para imprimir). La anotación `@SafeVarargs` le dice a Java que no se preocupe, que hemos comprobado que este uso es seguro. Es como asegurarle a alguien que te está observando que no se va a caer ningún plato mientras haces malabares.
+
 ---
 ### @FunctionalInterface
 **¿Qué hace?**
@@ -133,7 +141,9 @@ interface Operacion {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, la interfaz `Operacion` es una interfaz funcional porque solo tiene un método llamado `operar`. Usamos `@FunctionalInterface` para asegurarnos de que nadie agregue más métodos a esta interfaz. Es como decir: "Esta herramienta es solo para esta tarea y nada más".
+
 ---
 ### @Test
 **¿Qué hace?**
@@ -154,7 +164,9 @@ public class CalculadoraTest {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, `@Test` le dice a Java que este método `testSumar` es una prueba. En la prueba, estamos comprobando que el método `sumar` en la clase `Calculadora` funciona correctamente. Es como hacer una prueba para ver si una receta de cocina sale como se esperaba.
+
 ---
 ### @Entity
 **¿Qué hace?**
@@ -174,7 +186,9 @@ class Usuario {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, `Usuario` es una entidad porque hemos usado `@Entity`. Esto significa que en nuestra base de datos habrá una tabla llamada `Usuario`, y cada objeto `Usuario` que creamos será una fila en esa tabla, como tener un libro de registros donde se anota información de cada usuario.
+
 ---
 ### @Id
 ***¿Qué hace?***
@@ -192,7 +206,9 @@ class Usuario {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, el campo `id` está marcado con `@Id`, lo que significa que cada `Usuario` en la base de datos tendrá un `id` único. Es como una tarjeta de identificación que asegura que cada persona tiene un número único.
+
 ---
 ### @GeneratedValue
 **¿Qué hace?**
@@ -210,7 +226,9 @@ class Usuario {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, cada vez que se crea un nuevo `Usuario`, la base de datos genera automáticamente un nuevo `id` único para él. Es como que te asignen un número automáticamente cuando te unes a un club.
+
 ---
 ### @Column
 **¿Qué hace?**
@@ -229,7 +247,9 @@ class Usuario {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, `nombre` en la clase `Usuario` se almacena en la base de datos en una columna llamada `nombre_usuario`. Es como decir: "Quiero que mi columna tenga un nombre especial en la base de datos".
+
 ---
 ### @Autowired
 **¿Qué hace?**
@@ -250,7 +270,9 @@ public class ServicioUsuario {
 }
 ```
 **Explicación más detallada:**
+
 En este ejemplo, `@Autowired` se usa para que Spring encuentre automáticamente un objeto `RepositorioUsuario` y lo ponga en `ServicioUsuario`. Es como si tu robot ayudante te diera un martillo cada vez que dices "martillo", sin tener que buscarlo tú mismo.
+
 ---
 ### @Component
 **¿Qué hace?**
@@ -269,7 +291,9 @@ public class MiComponente {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, `MiComponente` está marcado como un componente, lo que significa que Spring lo reconocerá automáticamente y lo pondrá a disposición para ser utilizado en cualquier parte de la aplicación. Es como si tuvieras una herramienta universal que siempre está disponible en tu caja de herramientas.
+
 ---
 ### @Service
 **¿Qué hace?**
@@ -290,7 +314,9 @@ public class ServicioUsuario {
 }
 ```
 **Explicación más detallada:**
+
 En este ejemplo, `ServicioUsuario` está marcado como un servicio, lo que significa que es responsable de alguna parte importante de la lógica de negocio. Es como una máquina en la línea de montaje que realiza un trabajo específico.
+
 ---
 ### @Repository
 **¿Qué hace?**
@@ -307,7 +333,9 @@ public interface RepositorioUsuario extends JpaRepository<Usuario, Long> {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, `RepositorioUsuario` es una interfaz que está marcada como un repositorio. Esto significa que Spring sabe que esta clase se usará para guardar y buscar `Usuario` en la base de datos. Es como una oficina de archivo que gestiona todos los documentos de los usuarios.
+
 ---
 ### @Controller
 **¿Qué hace?**
@@ -329,7 +357,9 @@ public class ControladorInicio {
 }
 ```
 **Explicación más detallada:**
+
 En este ejemplo, `ControladorInicio` es un controlador que maneja las solicitudes que llegan a la raíz del sitio web (`"/"`). Es como un recepcionista que recibe a todos los visitantes que llegan al hotel y los dirige a la página de inicio.
+
 ---
 ### @RestController
 **¿Qué hace?**
@@ -350,7 +380,9 @@ public class ApiControlador {
 }
 ```
 ***Explicación más detallada:***
+
 Aquí, ApiControlador es un controlador REST que maneja solicitudes web enviadas a `"/saludo"` y devuelve directamente una respuesta de texto. Es como un repartidor que lleva las pizzas (datos) directamente a la puerta de tu casa (navegador o aplicación cliente).
+
 ---
 ### @RequestMapping
 **¿Qué hace?**
@@ -373,7 +405,9 @@ public class ApiControlador {
 }
 ```
 **Explicación más detallada:**
+
 En este ejemplo, `@RequestMapping("/api")` en la clase significa que todas las solicitudes que comienzan con `/api` serán manejadas por este controlador. Luego, `@RequestMapping("/saludo")` en el método saludo significa que este método maneja solicitudes a `/api/saludo`. Es como un directorio de oficinas que muestra qué habitaciones se encuentran en qué piso.
+
 ---
 ### @GetMapping
 **¿Qué hace?**
@@ -394,7 +428,9 @@ public class ApiControlador {
 }
 ```
 **Explicación más detallada:**
+
 Aquí, `@GetMapping("/saludo")` significa que este método maneja solicitudes GET a `/saludo`. Es como una calle de una sola dirección, solo las solicitudes GET pueden ir por ese camino.
+
 ---
 ### @PostMapping
 **¿Qué hace?**
@@ -416,7 +452,9 @@ public class ApiControlador {
 }
 ```
 **Explicación más detallada:**
+
 En este ejemplo, `@PostMapping("/usuario")` significa que este método maneja solicitudes POST a `/usuario`. Es como un buzón de sugerencias donde las personas solo pueden dejar notas (datos) pero no sacarlas.
+
 ---
 ### @RequestParam
 **¿Qué hace?**
