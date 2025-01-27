@@ -18,6 +18,7 @@ Aquí encontrarás ejemplos que he creado para mis alumnos y amigos que me han p
   - [Iteradores](Markdowns/Java/Iteradores.md)
   - [Patrones](Markdowns/Patrones/Patrones.md)
   - [Schedulers](Markdowns/Java/Schedulers.md)
+  - [Excepciones Personalizadas](Markdowns/Java/ExcepcionesPersonalizadas.md)
   
 
 - Spring Security
