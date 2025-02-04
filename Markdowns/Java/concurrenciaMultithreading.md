@@ -238,10 +238,6 @@ public class EjemploExecutor {
 <details>
     <summary>Solución</summary>
 
-¡Por supuesto! 🔥 Aquí tienes los ejercicios resueltos con código bien explicado.
-
----
-
 # **✅ Ejercicio 1: Crear 3 hilos que impriman su nombre y duerman 2 segundos**
 📌 **Objetivo:**
 - Crear 3 hilos.

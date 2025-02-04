@@ -20,7 +20,7 @@ Aquí encontrarás ejemplos que he creado para mis alumnos y amigos que me han p
   - [Excepciones Personalizadas](Markdowns/Java/ExcepcionesPersonalizadas.md)
   - [Streams](Markdowns/Java/Streams.md)
   - [Lambdas](Markdowns/Java/Lambdas.md)
-  - [Concurrencia y Multithreading](Markdowns/Java/ConcurrenciaMultithreading.md)
+  - [Concurrencia y Multithreading](Markdowns/Java/concurrenciaMultithreading.md)
   - [Hibernate](Markdowns/Java/hibernate.md)
 
 - Spring
