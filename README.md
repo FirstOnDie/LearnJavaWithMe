@@ -41,11 +41,11 @@ Aquí encontrarás ejemplos que he creado para mis alumnos y amigos que me han p
   - [NullPointerException](Markdowns/BestPractices/NullPointerException.md)
 
 - Java Avanzado en 21 dias
-  - [Indice](21DaysJavaAdvanced/README.md)
+  - [Indice](Markdowns/21DaysJavaAdvanced/README.md)
     - Semana 1 
-      - [Día 1: Programación Funcional en Java](21DaysJavaAdvanced/Dia1.md)
-      - [Día 2: Manejo Avanzado de Colecciones en Java](21DaysJavaAdvanced/Dia2.md)
-      - [Día 3: Entrada/Salida de Datos en Java (I/O y NIO)](21DaysJavaAdvanced/Dia3.md)
-      - [Día 4: Manejo de JSON y XML en Java](21DaysJavaAdvanced/Dia4.md)
-      - [Día 5: Pruebas en Java con JUnit y Mockito](21DaysJavaAdvanced/Dia5.md)
-      - [Día 6 y 7: Proyecto Práctico de Java Puro](21DaysJavaAdvanced/Dia6y7.md)
+      - [Día 1: Programación Funcional en Java](Markdowns/21DaysJavaAdvanced/Dia1.md)
+      - [Día 2: Manejo Avanzado de Colecciones en Java](Markdowns/21DaysJavaAdvanced/Dia2.md)
+      - [Día 3: Entrada/Salida de Datos en Java (I/O y NIO)](Markdowns/21DaysJavaAdvanced/Dia3.md)
+      - [Día 4: Manejo de JSON y XML en Java](Markdowns/21DaysJavaAdvanced/Dia4.md)
+      - [Día 5: Pruebas en Java con JUnit y Mockito](Markdowns/21DaysJavaAdvanced/Dia5.md)
+      - [Día 6 y 7: Proyecto Práctico de Java Puro](Markdowns/21DaysJavaAdvanced/Dia6y7.md)
