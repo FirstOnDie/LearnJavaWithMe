@@ -55,26 +55,26 @@
 ---
 
 ## **💡 Semana 3: Patrones de Diseño en Java**
-📌 **Día 11: Patrones Creacionales**  
+📌 **[Día 11: Patrones Creacionales](Dia11.md)**  
 ✔ Singleton, Factory, Builder  
 ✔ Ejercicio: **Sistema de generación de reportes**
 
-📌 **Día 12: Patrones Estructurales**  
+📌 **[Día 12: Patrones Estructurales](Dia12.md)**  
 ✔ Adapter, Decorator, Facade  
 ✔ Ejercicio: **Gestión de pagos con diferentes proveedores**
 
-📌 **Día 13: Patrones de Comportamiento**  
+📌 **[Día 13: Patrones de Comportamiento](Dia13.md)**  
 ✔ Observer, Strategy, Chain of Responsibility  
 ✔ Ejercicio: **Sistema de notificaciones**
 
-📌 **Día 14: Arquitectura Hexagonal y Clean Architecture**  
+📌 **[Día 14: Arquitectura Hexagonal y Clean Architecture](Day14.md)**  
 ✔ Separación de capas, Inyección de Dependencias  
 ✔ Ejercicio: **Aplicación backend escalable**
 
 ---
 
 ## **💡 Semana 4: Spring Boot Avanzado**
-📌 **Día 15: Creación de APIs REST con Spring Boot**  
+📌 **[Día 15: Creación de APIs REST con Spring Boot](Day15.md)**  
 ✔ **Controladores, DTOs, Validaciones**  
 ✔ **Swagger y OpenAPI**  
 ✔ Ejercicio: **API REST para gestión de pedidos**

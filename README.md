@@ -40,16 +40,22 @@ Aquí encontrarás ejemplos que he creado para mis alumnos y amigos que me han p
   - [Schedulers](Markdowns/BestPractices/Schedulers.md)
   - [NullPointerException](Markdowns/BestPractices/NullPointerException.md)
 
-- Java Avanzado en 21 dias
-  - [Indice](Markdowns/21DaysJavaAdvanced/README.md)
+- Java Avanzado en 28 dias
+  - [Indice](Markdowns/28DaysJavaAdvanced/README.md)
     - Semana 1 
-      - [Día 1: Programación Funcional en Java](Markdowns/21DaysJavaAdvanced/Dia1.md)
-      - [Día 2: Manejo Avanzado de Colecciones en Java](Markdowns/21DaysJavaAdvanced/Dia2.md)
-      - [Día 3: Entrada/Salida de Datos en Java (I/O y NIO)](Markdowns/21DaysJavaAdvanced/Dia3.md)
-      - [Día 4: Manejo de JSON y XML en Java](Markdowns/21DaysJavaAdvanced/Dia4.md)
-      - [Día 5: Pruebas en Java con JUnit y Mockito](Markdowns/21DaysJavaAdvanced/Dia5.md)
-      - [Día 6 y 7: Proyecto Práctico de Java Puro](Markdowns/21DaysJavaAdvanced/Dia6y7.md)
+      - [Día 1: Programación Funcional en Java](Markdowns/28DaysJavaAdvanced/Dia1.md)
+      - [Día 2: Manejo Avanzado de Colecciones en Java](Markdowns/28DaysJavaAdvanced/Dia2.md)
+      - [Día 3: Entrada/Salida de Datos en Java (I/O y NIO)](Markdowns/28DaysJavaAdvanced/Dia3.md)
+      - [Día 4: Manejo de JSON y XML en Java](Markdowns/28DaysJavaAdvanced/Dia4.md)
+      - [Día 5: Pruebas en Java con JUnit y Mockito](Markdowns/28DaysJavaAdvanced/Dia5.md)
+      - [Día 6 y 7: Proyecto Práctico de Java Puro](Markdowns/28DaysJavaAdvanced/Dia6y7.md)
     - Semana 2
-      - [Día 8: Hilos Avanzados en Java](Markdowns/21DaysJavaAdvanced/Dia8.md)
-      - [Día 9: Sincronización y Paralelismo](Markdowns/21DaysJavaAdvanced/Dia9.md)
-      - [Día 10: Programación Reactiva con Project Reactor](Markdowns/21DaysJavaAdvanced/Dia10.md)
+      - [Día 8: Hilos Avanzados en Java](Markdowns/28DaysJavaAdvanced/Dia8.md)
+      - [Día 9: Sincronización y Paralelismo](Markdowns/28DaysJavaAdvanced/Dia9.md)
+      - [Día 10: Programación Reactiva con Project Reactor](Markdowns/28DaysJavaAdvanced/Dia10.md)
+      - [Día 11: Patrones Creacionales](Markdowns/28DaysJavaAdvanced/Dia11.md)
+      - [Día 12: Patrones Estructurales](Markdowns/28DaysJavaAdvanced/Dia12.md)
+      - [Día 13: Patrones de Comportamiento](Markdowns/28DaysJavaAdvanced/Dia13.md)
+      - [Día 14: Arquitectura Hexagonal y Clean Architecture](Markdowns/28DaysJavaAdvanced/Dia14.md)
+    - Semana 3
+      - [Día 15: Creación de APIs REST con Spring Boot](Markdowns/28DaysJavaAdvanced/Dia15.md) 
