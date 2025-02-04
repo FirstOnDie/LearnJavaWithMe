@@ -1,56 +1,202 @@
-# Estructura DDD
+# **📌 Introducción a Domain-Driven Design (DDD)**
+Hoy aprenderás:  
+✅ **Conceptos clave de DDD**  
+✅ **Modelo de dominio, entidades y agregados**  
+✅ **Event-Driven Architecture con DDD**  
+✅ **Ejemplo práctico en Java con Spring Boot**
 
-Vamos a ver como funciona la estructura de un proyecto DDD.
+---
 
-## ¿Qué es DDD?
+📌 **¿Por qué es importante?**  
+**DDD (Domain-Driven Design)** es una estrategia de diseño de software que permite construir **sistemas escalables, flexibles y alineados con el negocio**. Con DDD, el **código refleja las reglas y procesos del negocio**, facilitando la evolución y el mantenimiento.
 
-DDD (Domain Driven Design) es una metodología de diseño de software que se centra en el dominio del problema, en lugar de en la tecnología. Es decir, se centra en el negocio y en cómo se resuelven los problemas de negocio.
+---
 
-Imagina que estás creando una ciudad en tu juego favorito de construcción de ciudades. En esta ciudad, hay diferentes barrios y cada barrio tiene su propósito: hay uno donde viven las personas, otro donde trabajan, otro donde estudian, y así sucesivamente. Cada barrio tiene sus propias reglas y formas de hacer las cosas.
+# **1️⃣ ¿Qué es Domain-Driven Design (DDD)?**
+📌 **DDD es un enfoque de diseño que:**  
+✔ **Organiza el código en torno al dominio del negocio.**  
+✔ **Reduce la complejidad separando capas y responsabilidades.**  
+✔ **Facilita la comunicación entre desarrolladores y expertos del negocio.**
 
-**El Diseño Dirigido por el Dominio (DDD) es como construir esa ciudad de manera que cadaa barrio esté bien organizado y funcione perfectamente con los demás.** Se enfoca en entender y modelar el "dominio" o el tema del que trata la aplicación, como si estuvieras organizando todos los barrios para que la ciudad funcione bien.
+📌 **Ejemplo: Gestión de Pedidos**  
+Imagina que estás construyendo un sistema de e-commerce. Con DDD, en lugar de pensar en "controladores y bases de datos", modelas conceptos del negocio como **Pedidos, Productos, Pagos** y cómo interactúan.
 
-## Componentes Clave de DDD
+📌 **DDD se basa en:**  
+✔ **Lenguaje Ubicuo (Ubiquitous Language):** Términos del negocio en código.  
+✔ **Modelo de Dominio:** Representación de la lógica del negocio.  
+✔ **Bounded Contexts:** Separación de diferentes áreas del sistema.  
+✔ **Entidades, Agregados, Value Objects y Repositorios.**
 
-Para entender mejor, vamos a ver cómo sería una ciudad siguiendo los principios de DDD:
+✅ **DDD NO es solo un patrón, es una mentalidad de diseño.**
 
-- **Dominio**:
-  - **Qué es**: El dominio es el tema principal o la "idea" de lo que trata tu ciudad (o tu aplicación).
-  - **Ejemplo**: Imagina que el dominio de tu ciudad es "educación". Toda la ciudad está construida alrededor del concepto de enseñar y aprender.
+---
 
-- **Entidades**:
-    - **Qué es**: Las entidades son cosas importantes en tu ciudad que tienen una identidad única. Son como los personajes principales de una historia.
-    - **Ejemplo**: En nuestra ciudad educativa, las entidades podrían ser "Estudiante", "Profesor" y "Curso". Cada uno tiene características únicas: cada estudiante tiene un nombre, una edad y un ID único; cada profesor tiene un nombre y asignaturas que enseña; y cada curso tiene un título y una duración.
+# **2️⃣ Conceptos Clave de DDD**
+📌 **1️⃣ Bounded Contexts (Contextos Delimitados)**  
+✔ Un **sistema grande** se divide en **múltiples contextos** independientes.  
+✔ Cada contexto tiene **su propio modelo y base de datos** si es necesario.  
+✔ **Ejemplo:** Un sistema de e-commerce tiene estos **Bounded Contexts**:
+- **Pedidos (Orders)**
+- **Pagos (Payments)**
+- **Usuarios (Users)**
 
-- **Objetos de Valor**:
-    - **Qué es**: Son cosas que no tienen identidad única por sí mismas, pero que son importantes con su valor. Son como características de los personajes.
-    - **Ejemplo**: En nuestra ciudad, un "Nombre" puede ser un objeto de valor. No importa si hay dos estudiantes con el mismo nombre, porque lo importante es el valor del nombre, no la identidad del nombre en sí.
-  
-- **Agregados**:
-    - **Qué es**: Un agregado es como un grupo de entidades que están relacionadas y se tratan como una sola unidad. Piensa en esto como un equipo dentro de tu ciudad.
-    - **Ejemplo**: En nuestro caso, un "Curso" podrías ser un agregado que incluye a los estudiantes y al profesor que lo enseña. Todo el equipo del curso se trata como una sola unidad, porque si algo cambia en el curso, podría afectar a todos los estudiantes y al profesor.
+📌 **2️⃣ Entidades y Value Objects**  
+✔ **Entidad:** Tiene un identificador único y cambia con el tiempo.  
+✔ **Value Object:** No tiene identidad, solo representa un valor.
 
-- **Repositorios**:
-  - **Qué es**: Los repositorios son como grandes bibliotecas o almacenes donde guardamos y organizamos nuestras entidades.
-  - **Ejemplo**: En la ciudad, tendríamos un repositorio para los "Estudiantes" y otro para los "Profesores". Es donde buscaríamos un estudiante o profesor cuando necesitamos información sobre ellos.
+📌 **Ejemplo en Java:**
+```java
+@Entity
+public class Pedido {
+    @Id @GeneratedValue
+    private Long id;
+    private String cliente;
+    private EstadoPedido estado; // Value Object
 
-- **Servicios de Dominio**:
-  - **Qué es**: Son trabajos o tareas que no pertenecen a ninguna entidad en particular, pero que son importantes para el dominio.
-  - **Ejemplo**: Un servicio de dominio en nuestra ciudad educativa podría ser "Asignar Estudiantes a un Curso". No pertenece a ningún estudiante o curso en particular, pero es un trabajo necesario para el funcionamiento de la ciudad.
+    public Pedido(String cliente) {
+        this.cliente = cliente;
+        this.estado = EstadoPedido.NUEVO;
+    }
+}
+```
+📌 **Value Object (`EstadoPedido` como un `enum`)**
+```java
+public enum EstadoPedido {
+    NUEVO, PAGADO, ENVIADO, CANCELADO;
+}
+```
+✅ **Las entidades tienen identidad, los Value Objects no.**
 
-## Ejemplo de DDD: Ciudad Educativa
+---
 
-Ahora, pongamos todo esto junto a nuestra "Ciudad Educativa":
+📌 **3️⃣ Agregados y Repositorios**  
+✔ **Un Agregado es un grupo de entidades con una raíz (Aggregate Root).**  
+✔ **El acceso a los datos debe pasar siempre por la raíz del agregado.**  
+✔ **Ejemplo:** Un `Pedido` (raíz) contiene `LineasDePedido`.
 
-- **Dominio**: Educación
-- **Entidades**: Estudiante, Profesor, Curso
-- **Objetos de Valor**: Nombre, Edad, Materia
-- **Agregados**: Un curso es un agregado que incluye estudiantes y un profesor.
-- **Repositorios**: Tenemos un repositorio de estudiantes y otro de profesores para organizar y buscar información.
-- **Servicios de Dominio**: "Asignar Estudiantes a un Curso" es una tarea que ayuda a que la ciudad funcione bien.
+📌 **Ejemplo en Java:**
+```java
+@Entity
+public class Pedido {
+    @Id @GeneratedValue
+    private Long id;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LineaDePedido> lineas = new ArrayList<>();
 
-## ¿Por qué es útil DDD?
+    public void agregarProducto(String producto, int cantidad) {
+        this.lineas.add(new LineaDePedido(producto, cantidad));
+    }
+}
+```
+📌 **Repositorio (`PedidoRepository.java`)**
+```java
+@Repository
+public interface PedidoRepository extends JpaRepository<Pedido, Long> {
+}
+```
+✅ **Siempre usamos `PedidoRepository` para modificar el agregado.**
 
-DDD es útil porque te ayuda a organizar tu "ciudad" (o tu aplicación) de manera que todo funcione de forma clara y lógica. Cada "barrio" (o parte de la aplicación) sabe lo que debe hacer y cómo interactuar con los demás barrios. Esto hace que la ciudad sea fácil de manejar y mejorar.
+---
 
-En resumen, **DDD es como construir una ciudad de manera que cada parte esté bien estructurada y cumpla con su propósito, asegurando que todo funcione de manera armoniosa.**
+# **3️⃣ Implementación Completa de un Módulo DDD en Java**
+📌 **Estructura del Proyecto:**
+```
+📂 src/main/java/com/ejemplo/pedidos/
+ ├── 📂 domain/         # Lógica de Negocio (DDD)
+ │    ├── Pedido.java
+ │    ├── LineaDePedido.java
+ │    ├── EstadoPedido.java
+ │    ├── PedidoRepository.java
+ ├── 📂 application/    # Casos de Uso
+ │    ├── PedidoService.java
+ ├── 📂 infrastructure/ # Infraestructura (DB, API)
+ │    ├── PedidoController.java
+```
+📌 **1️⃣ Capa de Dominio (`Pedido.java`)**
+```java
+@Entity
+public class Pedido {
+    @Id @GeneratedValue
+    private Long id;
+    private String cliente;
+    @Enumerated(EnumType.STRING)
+    private EstadoPedido estado;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LineaDePedido> lineas = new ArrayList<>();
+
+    public Pedido(String cliente) {
+        this.cliente = cliente;
+        this.estado = EstadoPedido.NUEVO;
+    }
+
+    public void agregarProducto(String producto, int cantidad) {
+        this.lineas.add(new LineaDePedido(producto, cantidad));
+    }
+
+    public void marcarComoPagado() {
+        if (this.estado != EstadoPedido.NUEVO) {
+            throw new IllegalStateException("Pedido ya procesado");
+        }
+        this.estado = EstadoPedido.PAGADO;
+    }
+}
+```
+📌 **2️⃣ Capa de Aplicación (`PedidoService.java`)**
+```java
+@Service
+public class PedidoService {
+    private final PedidoRepository pedidoRepository;
+
+    public PedidoService(PedidoRepository pedidoRepository) {
+        this.pedidoRepository = pedidoRepository;
+    }
+
+    public Pedido crearPedido(String cliente) {
+        Pedido pedido = new Pedido(cliente);
+        return pedidoRepository.save(pedido);
+    }
+
+    public void agregarProducto(Long pedidoId, String producto, int cantidad) {
+        Pedido pedido = pedidoRepository.findById(pedidoId)
+            .orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
+        pedido.agregarProducto(producto, cantidad);
+        pedidoRepository.save(pedido);
+    }
+
+    public void procesarPago(Long pedidoId) {
+        Pedido pedido = pedidoRepository.findById(pedidoId)
+            .orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
+        pedido.marcarComoPagado();
+        pedidoRepository.save(pedido);
+    }
+}
+```
+📌 **3️⃣ Capa de Infraestructura (`PedidoController.java`)**
+```java
+@RestController
+@RequestMapping("/pedidos")
+public class PedidoController {
+    private final PedidoService pedidoService;
+
+    public PedidoController(PedidoService pedidoService) {
+        this.pedidoService = pedidoService;
+    }
+
+    @PostMapping
+    public Pedido crearPedido(@RequestParam String cliente) {
+        return pedidoService.crearPedido(cliente);
+    }
+
+    @PostMapping("/{id}/producto")
+    public void agregarProducto(@PathVariable Long id, @RequestParam String producto, @RequestParam int cantidad) {
+        pedidoService.agregarProducto(id, producto, cantidad);
+    }
+
+    @PostMapping("/{id}/pagar")
+    public void procesarPago(@PathVariable Long id) {
+        pedidoService.procesarPago(id);
+    }
+}
+```
+
+Finalmente! En esta misma carpeta tienes un ejemplo de proyecto con DDD en Java con Spring Boot. 🚀

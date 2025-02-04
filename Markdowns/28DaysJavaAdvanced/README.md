@@ -103,19 +103,19 @@
 ---
 
 ## **💡 Semana 5: Optimización y Buenas Prácticas**
-📌 **Día 22: Optimización de Código en Java**  
+📌 **[Día 22: Optimización de Código en Java](Dia22.md)**  
 ✔ **Profiling con JVisualVM, JMC**  
 ✔ **Evitar memory leaks y GC tuning**
 
-📌 **Día 23: Buenas Prácticas y SOLID**  
+📌 **[Día 23: Buenas Prácticas y SOLID](Dia23.md)**  
 ✔ **Inyección de dependencias, Testing, Logging**
 
-📌 **Día 24: Despliegue de aplicaciones Java**  
+📌 **[Día 24: Despliegue de aplicaciones Java](Dia24.md)**  
 ✔ **Docker + Kubernetes para Java y Spring Boot**
 
-📌 **Día 25-27: Proyecto avanzado**  
+📌 **[Día 25-27: Proyecto avanzado](Dia25-27.md)**  
 ✔ **Construcción de un sistema de microservicios en la nube**
 
-📌 **Día 28: Entrevistas técnicas en Java**  
+📌 **[Día 28: Entrevistas técnicas en Java](Dia28.md)**  
 ✔ **Preguntas avanzadas de entrevistas**  
 ✔ **Práctica de coding challenges**
