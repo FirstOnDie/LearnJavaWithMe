@@ -49,3 +49,7 @@ Aquí encontrarás ejemplos que he creado para mis alumnos y amigos que me han p
       - [Día 4: Manejo de JSON y XML en Java](Markdowns/21DaysJavaAdvanced/Dia4.md)
       - [Día 5: Pruebas en Java con JUnit y Mockito](Markdowns/21DaysJavaAdvanced/Dia5.md)
       - [Día 6 y 7: Proyecto Práctico de Java Puro](Markdowns/21DaysJavaAdvanced/Dia6y7.md)
+    - Semana 2
+      - [Día 8: Hilos Avanzados en Java](Markdowns/21DaysJavaAdvanced/Dia8.md)
+      - [Día 9: Sincronización y Paralelismo](Markdowns/21DaysJavaAdvanced/Dia9.md)
+      - [Día 10: Programación Reactiva con Project Reactor](Markdowns/21DaysJavaAdvanced/Dia10.md)

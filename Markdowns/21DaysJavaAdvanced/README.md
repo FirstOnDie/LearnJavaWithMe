@@ -37,17 +37,17 @@
 ---
 
 ## **💡 Semana 2: Concurrencia y Multithreading Avanzado**
-📌 **Día 8: Hilos Avanzados en Java**  
+📌 **[Día 8: Hilos Avanzados en Java](Dia8.md)**  
 ✔ **ThreadPool, Executors, Fork/Join Framework**  
 ✔ **CompletableFuture** y programación reactiva  
 ✔ Ejercicio: **Simulación de descarga de archivos concurrente**
 
-📌 **Día 9: Sincronización y Paralelismo**  
+📌 **[Día 9: Sincronización y Paralelismo](Dia9.md)**  
 ✔ **Locks, ReentrantLock, ReadWriteLock**  
 ✔ **Atomic Variables y ThreadLocal**  
 ✔ Ejercicio: **Sistema bancario concurrente**
 
-📌 **Día 10: Programación Reactiva con Project Reactor**  
+📌 **[Día 10: Programación Reactiva con Project Reactor](Dia10.md)**  
 ✔ **Mono y Flux**  
 ✔ **Backpressure y operadores avanzados**  
 ✔ Ejercicio: **Procesamiento de eventos en tiempo real**
