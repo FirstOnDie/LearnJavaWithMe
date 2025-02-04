@@ -67,37 +67,37 @@
 ✔ Observer, Strategy, Chain of Responsibility  
 ✔ Ejercicio: **Sistema de notificaciones**
 
-📌 **[Día 14: Arquitectura Hexagonal y Clean Architecture](Day14.md)**  
+📌 **[Día 14: Arquitectura Hexagonal y Clean Architecture](Dia14.md)**  
 ✔ Separación de capas, Inyección de Dependencias  
 ✔ Ejercicio: **Aplicación backend escalable**
 
 ---
 
 ## **💡 Semana 4: Spring Boot Avanzado**
-📌 **[Día 15: Creación de APIs REST con Spring Boot](Day15.md)**  
+📌 **[Día 15: Creación de APIs REST con Spring Boot](Dia15.md)**  
 ✔ **Controladores, DTOs, Validaciones**  
 ✔ **Swagger y OpenAPI**  
 ✔ Ejercicio: **API REST para gestión de pedidos**
 
-📌 **Día 16: Spring Data JPA y Hibernate Avanzado**  
+📌 **[Día 16: Spring Data JPA y Hibernate Avanzado](Dia16.md)**  
 ✔ **Consultas avanzadas con Criteria API y JPQL**  
 ✔ **Paginación y búsqueda dinámica**  
 ✔ Ejercicio: **Sistema de reportes financieros**
 
-📌 **Día 17: Spring Security y OAuth2**  
+📌 **[Día 17: Spring Security y OAuth2](Dia17.md)**  
 ✔ Autenticación con **JWT**  
 ✔ OAuth2 con **Keycloak**  
 ✔ Ejercicio: **Protección de una API REST**
 
-📌 **Día 18: Spring Boot y Microservicios**  
+📌 **[Día 18: Spring Boot y Microservicios](Dia18.md)**  
 ✔ **Eureka, Feign Clients, Circuit Breaker**  
 ✔ Ejercicio: **Microservicio de pagos**
 
-📌 **Día 19: Comunicación Asíncrona con Kafka y RabbitMQ**  
+📌 **[Día 19: Comunicación Asíncrona con Kafka y RabbitMQ](Dia19.md)**  
 ✔ **Mensajería con Kafka y RabbitMQ**  
 ✔ Ejercicio: **Sistema de procesamiento de eventos en tiempo real**
 
-📌 **Día 20 y 21: Proyecto final con Spring Boot**  
+📌 **[Día 20 y 21: Proyecto final con Spring Boot](Dia20y21.md)**  
 ✔ Crear una **aplicación completa** con **Spring Boot, Security, Kafka y Microservicios**.
 
 ---
