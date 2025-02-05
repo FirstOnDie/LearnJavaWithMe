@@ -75,6 +75,7 @@ Domina Java con técnicas y patrones avanzados.
 - 🔹 [Logging eficiente](Markdowns/BestPractices/Logging.md)
 - 🔹 [Uso de Schedulers](Markdowns/BestPractices/Schedulers.md)
 - 🔹 [Evitar `NullPointerException`](Markdowns/BestPractices/NullPointerException.md)
+- 🔹 [Preguntas de entrevistas](Markdowns/Java/entrevistas.md)
 
 ---
 
