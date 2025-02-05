@@ -14,7 +14,7 @@
 ## **📌 1️⃣ Java Básico**
 Aprende Java desde cero con ejemplos prácticos.
 
-📌 **[Java Básico en 28 días (INCOMPLETO)](Markdowns/28DaysJavaBasic/README.md)**  
+📌 **[Java Básico en 28 días](Markdowns/28DaysJavaBasic/README.md)**  
 ✔ Variables y Tipos de Datos  
 ✔ Estructuras de Control  
 ✔ Programación Orientada a Objetos (POO)  
