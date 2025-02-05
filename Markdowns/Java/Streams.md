@@ -1,143 +1,200 @@
+# **📌 Streams en Java** 🌊🚀
 
-# **Streams** 💻✨
+📌 **¿Qué son los Streams?**  
+Un **Stream** en Java es una **secuencia de datos** que permite realizar operaciones sobre colecciones de manera **declarativa**, **eficiente** y **paralela**.
 
-## **¿Qué son los Streams?**
-Un `Stream` en Java es una secuencia de datos que se puede procesar de manera declarativa (al estilo de SQL) para realizar transformaciones y filtrados en colecciones de datos o cualquier otra fuente.
+📌 **¿Por qué usar Streams?**  
+✔ **Código más limpio y legible** → Evita bucles innecesarios.  
+✔ **Mejor rendimiento** → Usa evaluación perezosa (**lazy evaluation**).  
+✔ **Optimización automática** → Puede ejecutarse en paralelo fácilmente.
 
-### **Características clave**
-- **Declarativo**: En lugar de bucles tradicionales (`for`, `while`), usas métodos como `filter` o `map` para describir el proceso.
-- **Inmutable**: Los streams no modifican los datos originales; trabajan sobre una copia.
-- **Lazy evaluation**: Los datos no se procesan hasta que se realiza una operación terminal.
-- **Paralelismo**: Los streams pueden aprovechar múltiples hilos con `parallelStream`.
+💡 **Ejemplo real:**  
+Imagina que tienes una **lista de pedidos** en una tienda online. Con **Streams**, puedes:  
+✔ **Filtrar los pedidos mayores a $100** 🛒.  
+✔ **Ordenarlos por fecha** 📅.  
+✔ **Obtener el total de ventas** 💰.
 
----
-
-## **Operaciones de un Stream**
-Los streams trabajan con dos tipos principales de operaciones:
-
-### 1. **Operaciones intermedias** (transforman el stream):
-- **`filter(Predicate)`**: Filtra elementos que cumplan una condición.
-- **`map(Function)`**: Transforma cada elemento.
-- **`sorted()`**: Ordena los elementos.
-- **`distinct()`**: Elimina duplicados.
-- **`limit(n)`**: Limita el número de elementos.
-- **`skip(n)`**: Salta los primeros `n` elementos.
-
-### 2. **Operaciones terminales** (cierran el stream y devuelven un resultado):
-- **`collect(Collector)`**: Convierte el stream en una colección.
-- **`forEach(Consumer)`**: Itera sobre cada elemento.
-- **`reduce(BinaryOperator)`**: Combina elementos para producir un único valor.
-- **`count()`**: Devuelve la cantidad de elementos.
-- **`anyMatch/noneMatch/allMatch(Predicate)`**: Devuelve booleanos en base a condiciones.
-
----
-
-## **Creación de Streams**
-
-Los streams se pueden crear a partir de:
-1. **Colecciones**:
-   ```java
-   List<Integer> lista = List.of(1, 2, 3);
-   Stream<Integer> stream = lista.stream();
-   ```
-2. **Arrays**:
-   ```java
-   int[] numeros = {1, 2, 3};
-   IntStream stream = Arrays.stream(numeros);
-   ```
-3. **Stream directo**:
-   ```java
-   Stream<String> stream = Stream.of("A", "B", "C");
-   ```
-4. **Streams infinitos**:
-   ```java
-   Stream<Integer> infinito = Stream.iterate(1, n -> n + 1); // 1, 2, 3...
-   ```
-
----
-
-## **Ejemplo práctico completo**
-
-### **Caso práctico: Procesar una lista de empleados**
-Queremos filtrar empleados con un salario mayor a 2000, ordenar los resultados y obtener una lista con sus nombres.
-
-### **Código**
+📌 **Ejemplo sin Streams (forma tradicional)**
 ```java
-import java.util.*;
-import java.util.stream.Collectors;
-
-class Empleado {
-    private String nombre;
-    private double salario;
-
-    public Empleado(String nombre, double salario) {
-        this.nombre = nombre;
-        this.salario = salario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    @Override
-    public String toString() {
-        return "Empleado{" + "nombre='" + nombre + '\'' + ", salario=" + salario + '}';
+List<Integer> numeros = List.of(1, 2, 3, 4, 5, 6);
+List<Integer> cuadrados = new ArrayList<>();
+for (Integer num : numeros) {
+    if (num > 2) {
+        cuadrados.add(num * num);
     }
 }
+System.out.println(cuadrados); // [9, 16, 25, 36]
+```
+📌 **Ejemplo con Streams (forma optimizada)**
+```java
+List<Integer> cuadrados = numeros.stream()
+        .filter(n -> n > 2)   // Filtra números mayores que 2
+        .map(n -> n * n)      // Eleva al cuadrado
+        .collect(Collectors.toList()); // Guarda en una lista
+System.out.println(cuadrados); // [9, 16, 25, 36]
+```
+✅ **¡Menos código y más claridad!** 🚀
 
-public class StreamsEjemplo {
-    public static void main(String[] args) {
-        List<Empleado> empleados = Arrays.asList(
-                new Empleado("Juan", 1800),
-                new Empleado("Ana", 2500),
-                new Empleado("Pedro", 3000),
-                new Empleado("Marta", 2000)
-        );
+---
 
-        // Procesar la lista de empleados
-        List<String> nombres = empleados.stream()
-                .filter(e -> e.getSalario() > 2000)       // Filtrar por salario
-                .sorted(Comparator.comparing(Empleado::getSalario)) // Ordenar por salario
-                .map(Empleado::getNombre)                // Obtener solo los nombres
-                .collect(Collectors.toList());           // Recoger en una lista
+# **📌 Características clave de Streams**
 
-        System.out.println("Nombres de empleados filtrados: " + nombres);
-    }
-}
+✅ **Declarativo** → Usa métodos como `filter()`, `map()`, `reduce()`.  
+✅ **Inmutable** → No modifica la colección original.  
+✅ **Lazy evaluation** → No ejecuta operaciones hasta una "operación terminal".  
+✅ **Paralelo** → Puede ejecutarse en **múltiples hilos** (`parallelStream()`).
+
+---
+
+# **📌 Operaciones en Streams**
+
+📌 **Streams tienen dos tipos de operaciones:**
+
+🔹 **Operaciones intermedias** → Transforman el Stream, pero **no ejecutan** nada hasta que se llame una operación terminal.  
+🔹 **Operaciones terminales** → Ejecutan el Stream y devuelven un resultado (lista, número, booleano, etc.).
+
+📌 **Ejemplo gráfico:**
+```java
+List<Integer> resultado = numeros.stream()   // (1) Creamos el Stream
+        .filter(n -> n > 2)                  // (2) Filtramos (intermedia)
+        .map(n -> n * n)                     // (3) Transformamos (intermedia)
+        .sorted()                             // (4) Ordenamos (intermedia)
+        .collect(Collectors.toList());        // (5) Guardamos (terminal)
+```
+✅ **Hasta que llamamos `collect()`, no se ejecuta nada!**
+
+---
+
+# **📌 1️⃣ Operaciones Intermedias (Transforman el Stream)**
+
+📌 **`filter(Predicate)`** → Filtra elementos según una condición.
+```java
+List<String> nombres = List.of("Ana", "Pedro", "Juan", "Marta");
+List<String> nombresCortos = nombres.stream()
+        .filter(n -> n.length() <= 4)
+        .collect(Collectors.toList());
+System.out.println(nombresCortos); // [Ana, Juan]
 ```
 
-### **Salida esperada**
+📌 **`map(Function)`** → Transforma cada elemento en otro.
+```java
+List<Integer> numeros = List.of(1, 2, 3, 4);
+List<Integer> cuadrados = numeros.stream()
+        .map(n -> n * n)
+        .collect(Collectors.toList());
+System.out.println(cuadrados); // [1, 4, 9, 16]
+```
+
+📌 **`sorted(Comparator)`** → Ordena los elementos.
+```java
+List<Integer> numeros = List.of(5, 1, 4, 2);
+List<Integer> ordenados = numeros.stream()
+        .sorted()
+        .collect(Collectors.toList());
+System.out.println(ordenados); // [1, 2, 4, 5]
+```
+
+📌 **`distinct()`** → Elimina duplicados.
+```java
+List<Integer> numeros = List.of(1, 2, 2, 3, 3, 3);
+List<Integer> sinDuplicados = numeros.stream()
+        .distinct()
+        .collect(Collectors.toList());
+System.out.println(sinDuplicados); // [1, 2, 3]
+```
+
+📌 **`limit(n)`** → Toma los primeros `n` elementos.
+```java
+List<Integer> primeros = numeros.stream()
+        .limit(3)
+        .collect(Collectors.toList());
+System.out.println(primeros); // [1, 2, 2]
+```
+
+📌 **`skip(n)`** → Salta los primeros `n` elementos.
+```java
+List<Integer> saltados = numeros.stream()
+        .skip(2)
+        .collect(Collectors.toList());
+System.out.println(saltados); // [2, 3, 3]
+```
+
+---
+
+# **📌 2️⃣ Operaciones Terminales (Ejecutan el Stream)**
+
+📌 **`collect(Collector)`** → Convierte el Stream en una colección.
+```java
+Set<String> nombresSet = nombres.stream()
+        .collect(Collectors.toSet()); // Devuelve un Set en lugar de una lista
+```
+
+📌 **`forEach(Consumer)`** → Itera sobre cada elemento.
+```java
+nombres.stream().forEach(System.out::println);
+```
+
+📌 **`reduce(BinaryOperator)`** → Combina elementos en un solo resultado.
+```java
+int suma = numeros.stream().reduce(0, Integer::sum);
+System.out.println(suma); // 10
+```
+
+📌 **`count()`** → Devuelve la cantidad de elementos.
+```java
+long cantidad = numeros.stream().count();
+```
+
+📌 **`anyMatch/noneMatch/allMatch(Predicate)`** → Devuelven `true` o `false`.
+```java
+boolean hayPares = numeros.stream().anyMatch(n -> n % 2 == 0);
+boolean todosPositivos = numeros.stream().allMatch(n -> n > 0);
+boolean ningunNegativo = numeros.stream().noneMatch(n -> n < 0);
+```
+
+---
+
+# **📌 3️⃣ Creación de Streams**
+
+📌 **Desde una lista:**
+```java
+List<Integer> lista = List.of(1, 2, 3);
+Stream<Integer> stream = lista.stream();
+```
+
+📌 **Desde un array:**
+```java
+int[] numeros = {1, 2, 3};
+IntStream stream = Arrays.stream(numeros);
+```
+
+📌 **Usando `Stream.of(...)`**
+```java
+Stream<String> stream = Stream.of("A", "B", "C");
+```
+
+📌 **Streams Infinitos** (`iterate()` y `generate()`)
+```java
+Stream<Integer> infinito = Stream.iterate(1, n -> n + 1); // 1, 2, 3...
+```
+
+---
+
+# **📌 4️⃣ Ejemplo Completo** 🚀
+
+📌 **Filtrar empleados con salario > 2000, ordenarlos y obtener sus nombres.**
+```java
+List<String> nombres = empleados.stream()
+        .filter(e -> e.getSalario() > 2000)
+        .sorted(Comparator.comparing(Empleado::getSalario))
+        .map(Empleado::getNombre)
+        .collect(Collectors.toList());
+System.out.println(nombres);
+```
+
+✅ **Salida esperada:**
 ```
 Nombres de empleados filtrados: [Ana, Pedro]
 ```
 
 ---
-
-## **Explicación detallada**
-1. **Creación del stream**:  
-   `empleados.stream()` crea un stream a partir de la lista de empleados.
-
-2. **Filtrar elementos**:  
-   `.filter(e -> e.getSalario() > 2000)` incluye solo empleados con salario mayor a 2000.
-
-3. **Ordenar por salario**:  
-   `.sorted(Comparator.comparing(Empleado::getSalario))` ordena los empleados de menor a mayor salario.
-
-4. **Transformar datos**:  
-   `.map(Empleado::getNombre)` convierte cada empleado en su nombre (String).
-
-5. **Recolectar en una lista**:  
-   `.collect(Collectors.toList())` convierte el resultado en una lista.
-
----
-
-## **Tarea práctica para ti** 📝
-1. Dada una lista de números enteros, realiza las siguientes operaciones usando streams:
-    - Filtra los números que sean mayores que 5.
-    - Eleva al cuadrado los números filtrados.
-    - Ordena los números de mayor a menor.
-    - Devuelve el primer número de la lista (usando `findFirst()`).

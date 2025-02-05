@@ -1,95 +1,184 @@
-# NullPointerException
+# **📌 NullPointerException en Java** 🚨
 
-## Explicación:
+📌 **Un `NullPointerException` (NPE)** ocurre cuando intentamos acceder a un objeto que **no ha sido inicializado** (es `null`).
 
-Imagina que tienes una caja de juguetes y algunos de los juguetes están rotos o faltan piezas. Si intentas jugar con un juguete roto, no funcionará bien y podrías lastimarte. En Java, un NullPointerException es como intentar jugar con un juguete roto: el programa se detiene porque algo no está en su lugar.
+Imagina que tienes una caja de juguetes y algunos están **rotos o faltan piezas**. Si intentas jugar con un juguete roto, **no funcionará** y podrías lastimarte.
 
-Para evitar estos errores, hay algunas cosas que los programadores pueden hacer, como revisar si el juguete (o el objeto en el programa) está en buen estado antes de usarlo.
+➡ **En Java, `NullPointerException` es como intentar jugar con un juguete roto:** el programa **se detiene** porque algo no está en su lugar.
 
-## Ejemplos:
+✅ **Buenas prácticas para evitar `NullPointerException`:**  
+✔ **Verificar si un objeto es `null` antes de usarlo.**  
+✔ **Usar `Optional` para manejar valores que pueden ser `null`.**  
+✔ **Utilizar `Objects.requireNonNull()` cuando sea necesario.**  
+✔ **Evitar comparar `null` con `equals()` en variables inseguras.**
 
-### Comprobar antes de usar
+---
 
-:heavy_check_mark: **Buena práctica:**
-Aquí se comprueba si nombre es nulo antes de usarlo. Esto es como revisar si el juguete está roto antes de intentar jugar con él.
+## **📌 1️⃣ Comprobar antes de usar (`null check`)** ✅
+
+📌 **Ejemplo correcto:** Verificar si un objeto es `null` antes de utilizarlo.
 ```java
 String nombre = null;
 
 if (nombre != null) {
-    System.out.println(nombre.length());
+    System.out.println("Longitud del nombre: " + nombre.length());
 } else {
-    System.out.println("El nombre es nulo, no se puede calcular la longitud.");
+    System.out.println("⚠️ El nombre es nulo, no se puede calcular la longitud.");
 }
 ```
+✅ **Ventajas:**  
+✔ Evita el `NullPointerException`.  
+✔ Permite manejar los valores nulos correctamente.
 
-:x: **Mala práctica**:
-Este código intenta usar nombre sin comprobar si es nulo, lo que provoca un error, como jugar con un juguete roto.
-
+❌ **Ejemplo incorrecto:** No comprobar si el objeto es `null` antes de usarlo.
 ```java
 String nombre = null;
-System.out.println(nombre.length()); // ¡Error!
+System.out.println(nombre.length()); // ❌ ¡Error! NullPointerException
 ```
+➡ **Problema:** Se intenta llamar a `length()` en `null`, causando un error.
 
-### Comparar con un valor conocido
+---
 
-:heavy_check_mark: **Buena práctica:**
-En este ejemplo, equals se llama en el valor conocido "test" en lugar de en str, que podría ser nulo. Esto es como comprobar si tienes un juguete que sabes que está en buen estado.
+## **📌 2️⃣ Usar `Objects.requireNonNull()` para validaciones** 🔍
 
+📌 **Ejemplo correcto:**
+```java
+import java.util.Objects;
+
+public class Usuario {
+    private String nombre;
+
+    public Usuario(String nombre) {
+        this.nombre = Objects.requireNonNull(nombre, "⚠️ El nombre no puede ser nulo");
+    }
+}
+```
+✅ **Ventajas:**  
+✔ Evita la creación de objetos inválidos.  
+✔ Lanza una excepción clara si el valor es `null`.
+
+---
+
+## **📌 3️⃣ Comparar valores conocidos (`"test".equals(str)`)** ✔
+
+📌 **Ejemplo correcto:**
 ```java
 String str = null;
 
 if ("test".equals(str)) {
-        System.out.println("La cadena es igual a 'test'.");
+    System.out.println("✅ La cadena es igual a 'test'.");
 } else {
-        System.out.println("La cadena es nula o no es igual a 'test'.");
+    System.out.println("⚠️ La cadena es nula o diferente.");
 }
 ```
+✅ **Ventajas:**  
+✔ Evita el `NullPointerException`.  
+✔ Se asegura de que `equals()` nunca se llame en un valor `null`.
 
-:x: **Mala práctica**:
-Aquí, equals se llama en str, que es nulo, lo que provoca un error, como intentar usar un juguete que no tienes.
-
+❌ **Ejemplo incorrecto:** Llamar `equals()` en una variable que puede ser `null`.
 ```java
 String str = null;
 
-if (str.equals("test")) { // ¡Error!
-        System.out.println("La cadena es igual a 'test'.");
+if (str.equals("test")) { // ❌ ¡Error! NullPointerException
+    System.out.println("✅ La cadena es igual a 'test'.");
 }
 ```
+➡ **Problema:** `str` es `null`, por lo que `equals()` no puede ejecutarse.
 
-### Usar Optional para manejar valores que podrían ser nulos
+---
 
-:heavy_check_mark: **Buena práctica:**
-Este código utiliza Optional para envolver un valor que podría ser nulo y verificarlo de manera segura antes de usarlo. Esto es como guardar tus juguetes en una caja y comprobar que están allí antes de sacarlos.
+## **📌 4️⃣ Usar `Optional` para manejar valores nulos de forma segura** ☂️
 
+📌 **Ejemplo correcto con `Optional`:**
+```java
+import java.util.Optional;
+
+public class EjemploOptional {
+    public static void main(String[] args) {
+        String str = null;
+        Optional<String> optionalStr = Optional.ofNullable(str);
+
+        optionalStr.ifPresent(s -> System.out.println("✅ Longitud: " + s.length()));
+    }
+}
+```
+✅ **Ventajas:**  
+✔ **Evita el uso de `null` directamente.**  
+✔ **Hace el código más seguro y legible.**
+
+❌ **Ejemplo incorrecto:** Usar `null` sin `Optional`.
 ```java
 String str = null;
-Optional<String> optionalStr = Optional.ofNullable(str);
-
-optionalStr.ifPresent(s -> System.out.println("Longitud: " + s.length()));
+System.out.println(str.length()); // ❌ ¡Error! NullPointerException
 ```
+➡ **Problema:** `str` es `null`, por lo que `length()` no puede ejecutarse.
 
-:x: **Mala práctica**:
-Aquí se intenta usar str sin comprobar si es nulo, lo que provoca un error.
+---
 
+## **📌 5️⃣ Evitar `null` en Streams y Colecciones** 🚀
+
+📌 **Ejemplo correcto:** Usar `Optional` o `filter()` para evitar `null`.
 ```java
-String str = null;
-System.out.println(str.length()); // ¡Error!
+import java.util.List;
+
+public class StreamsEjemplo {
+    public static void main(String[] args) {
+        List<String> nombres = List.of("Ana", "Pedro", null, "Luis");
+
+        nombres.stream()
+                .filter(nombre -> nombre != null) // Evita NullPointerException
+                .forEach(System.out::println);
+    }
+}
 ```
+✅ **Ventajas:**  
+✔ Evita que los `null` causen errores en Streams.  
+✔ Hace el código más seguro y fácil de entender.
 
-### Usar String.valueOf() para evitar nulls
+❌ **Ejemplo incorrecto:** No filtrar `null` en Streams.
+```java
+nombres.stream().map(String::length).forEach(System.out::println); // ❌ ¡Error!
+```
+➡ **Problema:** Si la lista contiene `null`, `String::length` generará un `NullPointerException`.
 
-:heavy_check_mark: **Buena práctica:**
-Este código convierte numero en una cadena de manera segura, incluso si es nulo, devolviendo "null" en lugar de causar un error. Esto es como usar un juguete de repuesto si el que querías está roto.
+---
 
+## **📌 6️⃣ Usar `String.valueOf()` para evitar `null` en conversiones** 🔄
+
+📌 **Ejemplo correcto:**
 ```java
 Integer numero = null;
-System.out.println(String.valueOf(numero));
+System.out.println(String.valueOf(numero)); // ✅ Imprime "null" sin error.
 ```
+✅ **Ventajas:**  
+✔ Convierte valores nulos en `"null"` en lugar de lanzar una excepción.
 
-:x: **Mala práctica**:
-Aquí se intenta llamar a toString() en numero que es nulo, lo que provoca un error.
-
+❌ **Ejemplo incorrecto:**
 ```java
 Integer numero = null;
-System.out.println(numero.toString()); // ¡Error!
+System.out.println(numero.toString()); // ❌ ¡Error! NullPointerException
 ```
+➡ **Problema:** `numero` es `null`, por lo que `toString()` no puede ejecutarse.
+
+---
+
+## **📌 7️⃣ Evitar devolver `null`, usar valores por defecto** 🚀
+
+📌 **Ejemplo correcto:**
+```java
+public String obtenerNombreSeguro(String nombre) {
+    return nombre != null ? nombre : "Desconocido";
+}
+```
+✅ **Ventajas:**  
+✔ Retorna un valor seguro en lugar de `null`.
+
+❌ **Ejemplo incorrecto:**
+```java
+public String obtenerNombre(String nombre) {
+    return nombre; // ❌ Puede retornar null
+}
+```
+➡ **Problema:** Si `nombre` es `null`, cualquier uso posterior podría causar un `NullPointerException`.
+
+---

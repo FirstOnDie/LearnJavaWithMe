@@ -1,17 +1,21 @@
-# 📌 **Expresiones Lambda en Java**
+# **📌 Expresiones Lambda en Java** 🚀🔀
 
-Las **expresiones lambda** permiten escribir código más conciso y declarativo en Java, especialmente cuando se trabaja con funciones que requieren **interfaces funcionales** (interfaces con un solo método abstracto).
+📌 **¿Qué es una expresión Lambda?**  
+Una **expresión lambda** es una **función anónima** que nos permite escribir código más **conciso** y **legible**, especialmente al trabajar con **interfaces funcionales** (interfaces con un único método abstracto).
+
+💡 **Ejemplo real:**
+- Antes de Java 8, para pasar una función como argumento, necesitábamos **clases anónimas** (código repetitivo y difícil de leer).
+- Con **Lambdas**, podemos hacer lo mismo con **una sola línea de código**.
 
 ---
 
-## ✨ **¿Por qué usar Lambdas?**
-Antes de Java 8, cuando queríamos usar una función dentro de otra, teníamos que escribir **clases anónimas** con mucho código repetitivo. Con las lambdas, podemos escribir lo mismo en una sola línea.
+# **📌 1️⃣ Código Antes y Después de Lambdas**
 
-📌 **Ejemplo: Código antes de Java 8 (clase anónima)**
+📌 **Antes de Java 8 (Clase Anónima)**
 ```java
 import java.util.Comparator;
 
-public class EjemploAntesJava8 {
+public class SinLambda {
     public static void main(String[] args) {
         Comparator<Integer> comparador = new Comparator<Integer>() {
             @Override
@@ -24,58 +28,62 @@ public class EjemploAntesJava8 {
 }
 ```
 
-📌 **Código equivalente con Lambda (Java 8+)**
+📌 **Java 8+ (Con Lambda)**
 ```java
 import java.util.Comparator;
 
-public class EjemploLambda {
+public class ConLambda {
     public static void main(String[] args) {
         Comparator<Integer> comparador = (a, b) -> a.compareTo(b);
         System.out.println(comparador.compare(10, 5)); // Resultado: 1
     }
 }
 ```
-✅ ¡Mucho más limpio y fácil de leer! 😃
+✅ **¡Mucho más limpio y fácil de leer!** 🚀
 
 ---
 
-## **📌 Sintaxis de una expresión Lambda**
-Una lambda tiene tres partes:
+# **📌 2️⃣ Sintaxis de una Expresión Lambda**
+
+📌 **Estructura básica:**
 ```java
 (parametros) -> { cuerpo de la función }
 ```
-Ejemplo de estructura:
+
+📌 **Ejemplo de sintaxis y simplificación:**
 ```java
-(int a, int b) -> { return a + b; }
-```
-Pero se puede simplificar:
-```java
-(a, b) -> a + b
+(int a, int b) -> { return a + b; } // Versión detallada
+(a, b) -> a + b                      // Versión simplificada
 ```
 
-📌 **Reglas:**
-1. Si hay **un solo parámetro**, puedes omitir los paréntesis:
-   ```java
-   s -> s.length();
-   ```
-2. Si el cuerpo de la función tiene **una sola línea**, puedes omitir `{}` y `return`:
-   ```java
-   (a, b) -> a + b;
-   ```
-3. Si no hay parámetros, usa `() -> expresión`:
-   ```java
-   () -> System.out.println("Hola mundo!");
-   ```
+📌 **Reglas de simplificación:**  
+✅ **Un solo parámetro** → No necesita paréntesis.
+```java
+s -> s.length();
+```  
+✅ **Una sola línea de código** → Sin `{}` ni `return`.
+```java
+(a, b) -> a + b;
+```  
+✅ **Sin parámetros** → Usa `()`.
+```java
+() -> System.out.println("Hola Mundo!");
+```  
 
 ---
 
-# **📌 Interfaces funcionales y Lambdas**
-Las **interfaces funcionales** son clave para usar lambdas. La más conocida es `Runnable`:
+# **📌 3️⃣ Interfaces Funcionales y Lambdas**
+
+📌 **¿Qué es una interfaz funcional?**  
+Una **interfaz funcional** es aquella que tiene **un único método abstracto** y es el requisito para que una lambda funcione.
+
+📌 **Ejemplo con `Runnable` (sin recibir ni devolver valores)**
 ```java
 Runnable tarea = () -> System.out.println("Ejecutando tarea...");
+new Thread(tarea).start();
 ```
 
-📌 **Ejemplo con `Predicate` (función que devuelve `true` o `false`)**
+📌 **Ejemplo con `Predicate<T>` (devuelve `true` o `false`)**
 ```java
 import java.util.function.Predicate;
 
@@ -88,7 +96,7 @@ public class EjemploPredicate {
 }
 ```
 
-📌 **Ejemplo con `Function` (Transforma datos)**
+📌 **Ejemplo con `Function<T, R>` (Transforma un dato en otro)**
 ```java
 import java.util.function.Function;
 
@@ -100,7 +108,7 @@ public class EjemploFunction {
 }
 ```
 
-📌 **Ejemplo con `Consumer` (Ejecuta una acción sin devolver valor)**
+📌 **Ejemplo con `Consumer<T>` (Recibe un valor y ejecuta una acción, sin retorno)**
 ```java
 import java.util.function.Consumer;
 
@@ -112,10 +120,21 @@ public class EjemploConsumer {
 }
 ```
 
+📌 **Ejemplo con `Supplier<T>` (Provee un valor sin recibir parámetros)**
+```java
+import java.util.function.Supplier;
+
+public class EjemploSupplier {
+    public static void main(String[] args) {
+        Supplier<Double> aleatorio = () -> Math.random();
+        System.out.println(aleatorio.get());
+    }
+}
+```
+
 ---
 
-# **📌 Lambdas con Streams**
-Podemos usar lambdas para manipular colecciones de forma declarativa.
+# **📌 4️⃣ Lambdas con Streams**
 
 📌 **Ejemplo: Filtrar y procesar una lista de nombres**
 ```java
@@ -127,8 +146,8 @@ public class EjemploStreamsLambda {
         List<String> nombres = Arrays.asList("Ana", "Juan", "Pedro", "Marta", "Luis");
 
         nombres.stream()
-               .filter(n -> n.startsWith("M")) // Filtra nombres que comienzan con "M"
-               .forEach(System.out::println); // Imprime los resultados
+               .filter(n -> n.startsWith("M")) // Filtrar nombres con "M"
+               .forEach(System.out::println); // Imprimir resultados
     }
 }
 ```
@@ -148,9 +167,9 @@ public class EjemploMap {
         List<Integer> numeros = Arrays.asList(3, 1, 4, 1, 5, 9);
 
         List<Integer> cuadradosOrdenados = numeros.stream()
-                .map(n -> n * n)         // Elevar al cuadrado
-                .sorted()                // Ordenar ascendente
-                .collect(Collectors.toList()); // Recoger en una lista
+                .map(n -> n * n)  // Elevar al cuadrado
+                .sorted()         // Ordenar ascendente
+                .collect(Collectors.toList());
 
         System.out.println(cuadradosOrdenados);
     }
@@ -163,67 +182,71 @@ public class EjemploMap {
 
 ---
 
-## **📝 Ejercicio para ti**
-1. Crea una lista de números enteros y usa **streams + lambdas** para:
-    - Filtrar los números impares.
-    - Multiplicarlos por 3.
-    - Ordenarlos de mayor a menor.
-    - Imprimir el primer número de la lista.
+# **📌 5️⃣ Referencias a Métodos (`::`)**
 
-2. Implementa una función `Function<String, Integer>` que reciba un nombre y devuelva la cantidad de letras que tiene.
-
-<details>
-    <summary>Solución</summary>
-
-# **Ejercicio 1: Procesar una lista de números**
-📌 **Objetivo:**
-1. Filtrar los números impares.
-2. Multiplicarlos por 3.
-3. Ordenarlos de mayor a menor.
-4. Imprimir el primer número de la lista.
-
-### **Código resuelto**
+📌 **Ejemplo: `System.out::println` (Método estático de instancia)**
 ```java
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
-public class EjercicioLambdasStreams {
-    public static void main(String[] args) {
-        List<Integer> numeros = Arrays.asList(10, 3, 7, 5, 8, 1, 6, 9);
-
-        // Procesar la lista con Streams
-        Optional<Integer> primerNumero = numeros.stream()
-                .filter(n -> n % 2 != 0)  // Filtrar impares
-                .map(n -> n * 3)         // Multiplicar por 3
-                .sorted((a, b) -> b - a) // Ordenar de mayor a menor
-                .findFirst();            // Obtener el primer elemento
-
-        // Imprimir el resultado si existe
-        primerNumero.ifPresent(n -> System.out.println("El primer número es: " + n));
-    }
-}
+List<String> nombres = List.of("Ana", "Juan", "Pedro");
+nombres.forEach(System.out::println);
 ```
+
+📌 **Ejemplo: `String::toUpperCase` (Método de instancia de un objeto arbitrario)**
+```java
+List<String> nombres = List.of("ana", "juan", "pedro");
+nombres.stream().map(String::toUpperCase).forEach(System.out::println);
+```
+**Salida esperada:**
+```
+ANA
+JUAN
+PEDRO
+```
+
+📌 **Ejemplo: `Math::max` (Método estático)**
+```java
+BiFunction<Integer, Integer, Integer> maximo = Math::max;
+System.out.println(maximo.apply(10, 5)); // 10
+```
+
+📌 **Ejemplo: `Empleado::getNombre` (Método de una instancia específica)**
+```java
+List<Empleado> empleados = List.of(new Empleado("Ana", 3000), new Empleado("Pedro", 2500));
+empleados.stream().map(Empleado::getNombre).forEach(System.out::println);
+```
+
 ---
 
-# **Ejercicio 2: Contar letras en un nombre**
-📌 **Objetivo:**
-- Crear una función que reciba un **String** y devuelva la cantidad de letras.
+# **📌 6️⃣ Ejercicios Prácticos**
 
-### **Código resuelto**
+📌 **Ejercicio 1:**
+1. Crea una lista de números enteros y usa **Streams + Lambdas** para:
+   - Filtrar los números impares.
+   - Multiplicarlos por 3.
+   - Ordenarlos de mayor a menor.
+   - Imprimir el primer número de la lista.
+
+📌 **Ejercicio 2:**
+1. Implementa una función `Function<String, Integer>` que reciba un nombre y devuelva la cantidad de letras que tiene.
+
+<details>
+    <summary>💡 Ver solución</summary>
+
+📌 **Solución Ejercicio 1:**
 ```java
-import java.util.function.Function;
+Optional<Integer> resultado = numeros.stream()
+        .filter(n -> n % 2 != 0)
+        .map(n -> n * 3)
+        .sorted((a, b) -> b - a)
+        .findFirst();
+resultado.ifPresent(System.out::println);
+```
 
-public class EjercicioFunction {
-    public static void main(String[] args) {
-        // Definir la función lambda
-        Function<String, Integer> contarLetras = nombre -> nombre.length();
-
-        // Probar la función
-        System.out.println("Número de letras en 'Ana': " + contarLetras.apply("Ana"));
-        System.out.println("Número de letras en 'Programación': " + contarLetras.apply("Programación"));
-    }
-}
+📌 **Solución Ejercicio 2:**
+```java
+Function<String, Integer> contarLetras = nombre -> nombre.length();
+System.out.println(contarLetras.apply("Java")); // 4
 ```
 
 </details>
+
+---

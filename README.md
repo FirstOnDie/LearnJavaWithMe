@@ -40,7 +40,7 @@ Domina Java con técnicas y patrones avanzados.
 - 🔹 [Patrones de Diseño](Markdowns/Patrones/Patrones.md)
 - 🔹 [Schedulers](Markdowns/Java/Schedulers.md)
 - 🔹 [Streams](Markdowns/Java/Streams.md)
-- 🔹 [Lambdas](Markdowns/Java/Lambdas.md)
+- 🔹 [Lambdas](Markdowns/Java/lambdas.md)
 - 🔹 [Concurrencia y Multithreading](Markdowns/Java/concurrenciaMultithreading.md)
 - 🔹 [Hibernate y JPA](Markdowns/Java/hibernate.md)
 
@@ -49,7 +49,7 @@ Domina Java con técnicas y patrones avanzados.
 ## **📌 3️⃣ Spring y Frameworks**
 📌 **Desarrollo de aplicaciones empresariales con Spring.**
 
-- 🔹 [Spring Boot](SpringBoot)
+- 🔹 [Spring Boot](Markdowns/Spring/Springboot.md)
 - 🔹 [Autenticación y Autorización con Spring Security](Authentication-Authorization)
 
 📌 **Microservicios y APIs REST:**  

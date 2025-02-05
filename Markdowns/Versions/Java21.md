@@ -1,161 +1,209 @@
-# Java 21
+# **📌 Java 21 – Innovación y Eficiencia** 🚀☕
 
-Java 21 ha introducido muchas características interesantes que hacen que el lenguaje sea más poderoso y fácil de usar. Vamos a ver cada una de estas nuevas características y explicarlas con ejemplos sencillos.
+📌 **Java 21** ha traído **mejoras clave** en el lenguaje, enfocándose en **rendimiento, seguridad y productividad**. Esta versión introduce **nuevas características** que hacen que el código sea **más expresivo, conciso y eficiente**.
 
-## Resumen
-- String Templates: Ayuda a insertar valores en cadenas de texto de manera fácil y rápida.
-- Sequenced Collections: Mantiene elementos en un orden específico, como una fila de animales en el zoológico.
-- Pattern Matching for Switch: Identifica rápidamente tipos de objetos y realiza acciones específicas, como un robot que clasifica juguetes.
-- Record Patterns: Extrae datos fácilmente de registros, como fichas con etiquetas.
-- Virtual Threads: Hilos ligeros y rápidos para ejecutar muchas tareas pequeñas, como tener muchos amigos ayudantes.
-- Scoped Values: Valores especiales que solo están disponibles durante una tarea específica, como una caja mágica de secretos.
+✅ **Principales Novedades:**  
+✔ **String Templates** → Inserción de valores en Strings de forma más sencilla.  
+✔ **Sequenced Collections** → Mantenimiento del orden en colecciones de datos.  
+✔ **Pattern Matching for Switch** → `switch` más potente con coincidencia de patrones.  
+✔ **Record Patterns** → Extrae datos de registros de forma más intuitiva.  
+✔ **Virtual Threads** → Hilos ligeros para concurrencia a gran escala.  
+✔ **Scoped Values** → Variables con alcance específico para mayor seguridad y eficiencia.
 
-## String Templates (Plantillas de Cadenas)
-**¿Qué es?**
-Imagina que tienes un conjunto de bloques de construcción con los que puedes crear palabras o frases rápidamente, usando plantillas que puedes personalizar. En Java 21, las plantillas de cadenas permiten insertar fácilmente valores en cadenas de texto.
+---
 
-Ejemplo:
+# **📌 1️⃣ String Templates (Plantillas de Cadenas)** 📝
 
+📌 **¿Qué problema soluciona?**  
+Antes de Java 21, para construir cadenas con valores dinámicos, **teníamos que usar concatenación o `String.format()`**, lo cual podía ser tedioso.
+
+📌 **Ejemplo antes de Java 21**
 ```java
-public class Main {
-    public static void main(String[] args) {
-        String nombre = "Carlos";
-        int edad = 10;
-        // Usamos una plantilla para construir la cadena de texto
-        String mensaje = STR."Hola, mi nombre es \{nombre} y tengo \{edad} años.";
-        System.out.println(mensaje); // Imprime: "Hola, mi nombre es Carlos y tengo 10 años."
-    }
-}
+String nombre = "Carlos";
+int edad = 10;
+String mensaje = "Hola, mi nombre es " + nombre + " y tengo " + edad + " años.";
+System.out.println(mensaje);
 ```
-Explicación:
-
-En lugar de construir manualmente el texto, utilizamos plantillas para insertar directamente las variables nombre y edad en la cadena. ¡Es como tener un molde donde puedes cambiar lo que quieras sin rehacer todo!
-
-## Sequenced Collections (Colecciones Secuenciadas)
-**¿Qué es?**
-Imagina que tienes una fila de animales en un zoológico y quieres asegurarte de que siempre estén en el mismo orden, de principio a fin. En Java 21, las colecciones secuenciadas aseguran que los elementos se mantengan en un orden específico.
-
-Ejemplo:
-
+📌 **Ejemplo con `String Templates` en Java 21**
 ```java
-import java.util.ArrayList;
-import java.util.List;
-
-public class Main {
-    public static void main(String[] args) {
-        List<String> animales = new ArrayList<>();
-        animales.add("León");
-        animales.add("Tigre");
-        animales.add("Elefante");
-
-        // Imprimimos los animales en el orden en que se añadieron
-        animales.forEach(animal -> System.out.println(animal));
-        // Imprime: "León", "Tigre", "Elefante"
-    }
-}
+String mensaje = STR."Hola, mi nombre es \{nombre} y tengo \{edad} años.";
+System.out.println(mensaje); // "Hola, mi nombre es Carlos y tengo 10 años."
 ```
-Explicación:
+✅ **Ventajas:**  
+✔ **Código más limpio y legible.**  
+✔ **Evita concatenaciones repetitivas.**  
+✔ **Mejora el rendimiento y evita errores de formato.**
 
-Usando ArrayList, que es un tipo de colección secuenciada, siempre podemos mantener y recuperar los elementos en el orden en que fueron añadidos. ¡Es como tener una fila de animales en orden que nunca cambia!
-## Pattern Matching for Switch (Coincidencia de Patrones para switch)
-**¿Qué es?**
-Imagina que tienes una caja de juguetes que puede contener diferentes tipos de juguetes: coches, aviones, barcos, etc. Usando el switch con coincidencia de patrones, puedes identificar rápidamente qué tipo de juguete es y hacer algo específico con cada uno.
-
-Ejemplo:
-
+📌 **Ejemplo con cálculos dentro de la plantilla**
 ```java
+int a = 5, b = 10;
+String resultado = STR."La suma de \{a} y \{b} es \{a + b}.";
+System.out.println(resultado); // "La suma de 5 y 10 es 15."
+```
+
+---
+
+# **📌 2️⃣ Sequenced Collections (Colecciones Secuenciadas)** 📂
+
+📌 **¿Qué problema soluciona?**  
+Antes, las colecciones en Java **no garantizaban orden explícito en la mayoría de los casos**. Ahora, con **Sequenced Collections**, podemos **mantener, modificar y recuperar elementos de forma ordenada**.
+
+📌 **Ejemplo con `SequencedCollection` en Java 21**
+```java
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Object juguete = "Coche";
+        SequencedCollection<String> animales = new ArrayList<>(List.of("León", "Tigre", "Elefante"));
 
-        // Usamos pattern matching con switch para identificar el tipo de juguete
-        switch (juguete) {
-            case String s -> System.out.println("Es un juguete llamado: " + s);
-            case Integer i -> System.out.println("Es un juguete con número: " + i);
-            default -> System.out.println("Es un tipo de juguete desconocido");
-        }
+        System.out.println(animales.getFirst()); // "León"
+        System.out.println(animales.getLast());  // "Elefante"
+        
+        animales.addFirst("Mono");
+        animales.addLast("Cebra");
+
+        System.out.println(animales); // [Mono, León, Tigre, Elefante, Cebra]
     }
 }
 ```
-Explicación:
+✅ **Ventajas:**  
+✔ **Acceso rápido al primer y último elemento.**  
+✔ **Facilita la manipulación de colecciones ordenadas.**  
+✔ **Mejor rendimiento en estructuras de datos.**
 
-Aquí, el switch detecta automáticamente el tipo del objeto juguete y realiza una acción específica para cada tipo. ¡Es como si tuvieras un robot que automáticamente sabe qué hacer con cada tipo de juguete que encuentra!
+📌 **Ejemplo con `SequencedMap`**
+```java
+SequencedMap<String, Integer> edades = new LinkedHashMap<>();
+edades.put("Ana", 30);
+edades.put("Luis", 25);
+System.out.println(edades.firstEntry()); // {Ana=30}
+System.out.println(edades.lastEntry());  // {Luis=25}
+```
 
-## Record Patterns (Patrones de Registro)
-**¿Qué es?**
-Imagina que tienes una ficha que describe a una persona con su nombre y edad. Los patrones de registro te permiten trabajar fácilmente con estos datos, como si tuvieras etiquetas en la ficha para acceder rápidamente a la información.
+---
 
-Ejemplo:
+# **📌 3️⃣ Pattern Matching for Switch (Coincidencia de Patrones en `switch`)** 🔄
 
+📌 **¿Qué problema soluciona?**  
+Antes, teníamos que hacer **múltiples verificaciones `instanceof` y conversiones manuales**. Ahora, `switch` puede detectar **automáticamente el tipo** y ejecutar código específico.
+
+📌 **Ejemplo antes de Java 21**
+```java
+Object objeto = "Hola";
+
+if (objeto instanceof String) {
+    String s = (String) objeto; // ❌ Casting manual
+    System.out.println("Es un texto: " + s);
+} else if (objeto instanceof Integer) {
+    Integer i = (Integer) objeto;
+    System.out.println("Es un número: " + i);
+}
+```
+📌 **Ejemplo con `switch` en Java 21**
+```java
+Object objeto = "Hola";
+
+switch (objeto) {
+    case String s -> System.out.println("Es un texto: " + s);
+    case Integer i -> System.out.println("Es un número: " + i);
+    default -> System.out.println("Tipo desconocido");
+}
+```
+✅ **Ventajas:**  
+✔ **Código más limpio y sin casting manual.**  
+✔ **Mejora la seguridad y la legibilidad.**  
+✔ **Mayor flexibilidad en `switch`.**
+
+📌 **Ejemplo con `null` en `switch`**
+```java
+switch (objeto) {
+    case null -> System.out.println("El valor es nulo.");
+    case String s -> System.out.println("Cadena: " + s);
+    default -> System.out.println("Otro tipo.");
+}
+```
+
+---
+
+# **📌 4️⃣ Record Patterns (Patrones de Registro)** 🎯
+
+📌 **¿Qué problema soluciona?**  
+Antes, acceder a los valores de un `record` requería **múltiples llamadas a métodos**. Ahora, **Java 21 permite extraer los valores de forma más intuitiva**.
+
+📌 **Ejemplo sin Record Patterns**
 ```java
 record Persona(String nombre, int edad) {}
 
-public class Main {
-    public static void main(String[] args) {
-        Persona persona = new Persona("Carlos", 10);
-
-        // Usamos patrones de registro para extraer fácilmente los datos
-        if (persona instanceof Persona(String nombre, int edad)) {
-            System.out.println("Nombre: " + nombre + ", Edad: " + edad);
-        }
-    }
-}
+Persona persona = new Persona("Carlos", 10);
+System.out.println(persona.nombre() + " tiene " + persona.edad() + " años.");
 ```
-Explicación:
-
-Un record es como una ficha con datos. Puedes usar patrones para extraer esos datos fácilmente y trabajar con ellos. ¡Es como tener etiquetas mágicas que te dicen todo lo que necesitas saber sobre una persona!
-
-## Virtual Threads (Hilos Virtuales)
-**¿Qué es?**
-Imagina que tienes muchas tareas que hacer, como armar rompecabezas, y deseas que muchos amigos te ayuden al mismo tiempo. Los hilos virtuales son como esos amigos que pueden hacer muchas tareas pequeñas y rápidas simultáneamente, sin atascarse.
-
-Ejemplo:
-
+📌 **Ejemplo con Record Patterns en Java 21**
 ```java
+Persona persona = new Persona("Carlos", 10);
 
-public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        // Crear un hilo virtual para ejecutar una tarea
-        Thread hilo = Thread.ofVirtual().start(() -> {
-            System.out.println("Este es un hilo virtual ejecutando una tarea.");
-        });
-
-        hilo.join(); // Esperar a que el hilo termine
-    }
+if (persona instanceof Persona(String nombre, int edad)) {
+    System.out.println(nombre + " tiene " + edad + " años.");
 }
 ```
-Explicación:
+✅ **Ventajas:**  
+✔ **Código más limpio y sin llamadas repetitivas.**  
+✔ **Facilita el acceso a los valores de un `record`.**  
+✔ **Mejora la legibilidad y seguridad.**
 
-Los hilos virtuales son ligeros y rápidos. Puedes crear muchos de ellos para hacer tareas pequeñas y rápidas sin usar muchos recursos. ¡Es como tener un ejército de ayudantes diminutos que hacen tu trabajo muy rápidamente!
+---
 
-## Scoped Values (Valores con Alcance)
-**¿Qué es?**
-Imagina que tienes una caja mágica donde puedes guardar algo especial mientras haces una tarea, y solo puedes acceder a lo que hay dentro de la caja mientras estás haciendo esa tarea específica. Los valores con alcance funcionan de manera similar, proporcionando datos que solo son accesibles durante una operación particular.
+# **📌 5️⃣ Virtual Threads (Hilos Virtuales)** 🧵
 
-Ejemplo:
+📌 **¿Qué problema soluciona?**  
+Antes, crear **miles de hilos** en Java era **costoso en memoria y rendimiento**. Ahora, los **hilos virtuales permiten crear millones de tareas concurrentes sin problemas**.
 
+📌 **Ejemplo con `Thread.ofVirtual()` en Java 21**
+```java
+Thread hilo = Thread.ofVirtual().start(() -> {
+    System.out.println("Ejecutando tarea en un hilo virtual.");
+});
+
+hilo.join(); // Esperar a que termine
+```
+✅ **Ventajas:**  
+✔ **Creación masiva de hilos sin sobrecargar la CPU.**  
+✔ **Mejor rendimiento en aplicaciones concurrentes.**  
+✔ **Ideal para servidores de alto rendimiento.**
+
+📌 **Ejemplo con `ExecutorService` y hilos virtuales**
+```java
+ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
+
+executor.submit(() -> System.out.println("Tarea concurrente en hilo virtual."));
+executor.shutdown();
+```
+
+---
+
+# **📌 6️⃣ Scoped Values (Valores con Alcance)** 🎭
+
+📌 **¿Qué problema soluciona?**  
+Antes, compartir valores entre hilos requería **variables estáticas o `ThreadLocal`**, lo cual podía ser **poco eficiente y propenso a errores**.
+
+📌 **Ejemplo con `ScopedValue` en Java 21**
 ```java
 import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Callable;
+
+private static final ScopedValue<String> CONTEXTO = ScopedValue.newInstance();
 
 public class Main {
-// Un valor con alcance
-private static final ScopedValue<Integer> CONTEXTO_ESPECIAL = ScopedValue.newInstance();
-
     public static void main(String[] args) {
-        try (var scope = CONTEXTO_ESPECIAL.setWhere(123)) {
-            ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
-            executor.submit((Callable<Void>) () -> {
-                System.out.println("El valor especial es: " + CONTEXTO_ESPECIAL.get());
-                return null;
-            }).join();
+        try (var scope = CONTEXTO.setWhere("Valor Especial")) {
+            Executors.newVirtualThreadPerTaskExecutor().submit(() ->
+                System.out.println("El valor especial es: " + CONTEXTO.get())
+            ).join();
         }
     }
 }
 ```
-Explicación:
+✅ **Ventajas:**  
+✔ **Mayor seguridad en el manejo de datos compartidos.**  
+✔ **Evita problemas de concurrencia.**  
+✔ **Mejor gestión de variables con contexto limitado.**
 
-Valores con Alcance: Son como una caja especial que puedes usar para guardar algo solo mientras haces una tarea. Aquí, CONTEXTO_ESPECIAL es un valor que está disponible solo en una sección particular del código. ¡Es como si estuvieras usando una caja de secretos que desaparece después de usarla!
-
+---
