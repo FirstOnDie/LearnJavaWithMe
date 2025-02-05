@@ -90,7 +90,7 @@
 ✔ **Formato y manipulación de fechas**  
 ✔ Ejercicio: **Calculadora de edad basada en la fecha de nacimiento**
 
-✅ **Ejercicio Semana 2:** Mini-proyecto **"Sistema de Gestión de Productos"**
+✅ [**Ejercicio Semana 2:** Mini-proyecto **"Sistema de Gestión de Productos"**](Proyecto2.md)
 
 ---
 
@@ -102,7 +102,7 @@
 📌 **[Día 19: Consultas SQL en Java (SELECT, INSERT, UPDATE, DELETE)](Dia19.md)**  
 📌 **[Día 20: Manejo de Conexiones y Pool de Conexiones](Dia20.md)**
 
-✅ **Ejercicio Semana 3:** Mini-proyecto **"Gestor de Notas con Base de Datos"**
+✅ [**Ejercicio Semana 3:** Mini-proyecto **"Gestor de Notas con Base de Datos"**](Proyecto3.md)
 
 ---
 
