@@ -135,4 +135,4 @@
 📌 **[Día 27: Proyecto Final: Desarrollo de un Sistema de Inventario](Dia27.md)**  
 📌 **[Día 28: Despliegue de Aplicaciones Java (JAR, Instaladores, Docker)](Dia28.md)**
 
-✅ **Ejercicio Semana 4:** **¡Proyecto Final Completo!** 🎯
+✅ [**Ejercicio Semana 4:** **¡Proyecto Final Completo!**](Proyecto4.md) 🎯
