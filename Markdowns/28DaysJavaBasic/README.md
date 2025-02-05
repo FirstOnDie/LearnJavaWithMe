@@ -49,7 +49,7 @@
 ✔ **Diferencia entre atributos y métodos**  
 ✔ Ejercicio: **Crear una clase `Coche` con atributos y métodos básicos**
 
-✅ **Ejercicio Semana 1:** Mini-proyecto **"Calculadora Científica"**
+✅ [**Ejercicio Semana 1:** Mini-proyecto **"Calculadora Científica"**](Proyecto1.md)
 
 ---
 
