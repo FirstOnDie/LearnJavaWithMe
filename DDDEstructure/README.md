@@ -1,11 +1,4 @@
-# **📌 Introducción a Domain-Driven Design (DDD)**
-Hoy aprenderás:  
-✅ **Conceptos clave de DDD**  
-✅ **Modelo de dominio, entidades y agregados**  
-✅ **Event-Driven Architecture con DDD**  
-✅ **Ejemplo práctico en Java con Spring Boot**
-
----
+# **📌 Domain-Driven Design (DDD)** 🚀
 
 📌 **¿Por qué es importante?**  
 **DDD (Domain-Driven Design)** es una estrategia de diseño de software que permite construir **sistemas escalables, flexibles y alineados con el negocio**. Con DDD, el **código refleja las reglas y procesos del negocio**, facilitando la evolución y el mantenimiento.
@@ -30,71 +23,159 @@ Imagina que estás construyendo un sistema de e-commerce. Con DDD, en lugar de p
 ✅ **DDD NO es solo un patrón, es una mentalidad de diseño.**
 
 ---
+## **📌 Conceptos Clave en DDD** 🎯
 
-# **2️⃣ Conceptos Clave de DDD**
-📌 **1️⃣ Bounded Contexts (Contextos Delimitados)**  
-✔ Un **sistema grande** se divide en **múltiples contextos** independientes.  
-✔ Cada contexto tiene **su propio modelo y base de datos** si es necesario.  
-✔ **Ejemplo:** Un sistema de e-commerce tiene estos **Bounded Contexts**:
-- **Pedidos (Orders)**
-- **Pagos (Payments)**
-- **Usuarios (Users)**
+### **📍 1.1 El Dominio** 🏛️
+💡 **El dominio es el problema que la empresa quiere resolver**.
 
-📌 **2️⃣ Entidades y Value Objects**  
-✔ **Entidad:** Tiene un identificador único y cambia con el tiempo.  
-✔ **Value Object:** No tiene identidad, solo representa un valor.
-
-📌 **Ejemplo en Java:**
-```java
-@Entity
-public class Pedido {
-    @Id @GeneratedValue
-    private Long id;
-    private String cliente;
-    private EstadoPedido estado; // Value Object
-
-    public Pedido(String cliente) {
-        this.cliente = cliente;
-        this.estado = EstadoPedido.NUEVO;
-    }
-}
-```
-📌 **Value Object (`EstadoPedido` como un `enum`)**
-```java
-public enum EstadoPedido {
-    NUEVO, PAGADO, ENVIADO, CANCELADO;
-}
-```
-✅ **Las entidades tienen identidad, los Value Objects no.**
+Ejemplo:  
+Si estamos creando un sistema para una tienda en línea, el **dominio** es la gestión de productos, pedidos y clientes.
 
 ---
 
-📌 **3️⃣ Agregados y Repositorios**  
-✔ **Un Agregado es un grupo de entidades con una raíz (Aggregate Root).**  
-✔ **El acceso a los datos debe pasar siempre por la raíz del agregado.**  
-✔ **Ejemplo:** Un `Pedido` (raíz) contiene `LineasDePedido`.
+### **📍 1.2 Modelo de Dominio** 🛠️
+💡 **Es una representación del dominio en código**.
 
-📌 **Ejemplo en Java:**
+📌 **Ejemplo:** Si en la tienda los pedidos tienen estados como `"Pendiente"`, `"Enviado"` y `"Entregado"`, el modelo de dominio reflejará eso en clases y objetos.
+
 ```java
-@Entity
 public class Pedido {
-    @Id @GeneratedValue
-    private Long id;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<LineaDePedido> lineas = new ArrayList<>();
+    private String id;
+    private EstadoPedido estado;
 
-    public void agregarProducto(String producto, int cantidad) {
-        this.lineas.add(new LineaDePedido(producto, cantidad));
+    public Pedido(String id) {
+        this.id = id;
+        this.estado = EstadoPedido.PENDIENTE;
+    }
+
+    public void enviar() {
+        if (estado == EstadoPedido.PENDIENTE) {
+            estado = EstadoPedido.ENVIADO;
+        } else {
+            throw new IllegalStateException("No se puede enviar un pedido que no está pendiente.");
+        }
+    }
+
+    public EstadoPedido getEstado() {
+        return estado;
+    }
+}
+
+enum EstadoPedido {
+    PENDIENTE, ENVIADO, ENTREGADO
+}
+```
+
+✅ **Este código refleja la realidad del negocio:** Un pedido empieza como `"Pendiente"`, y solo puede pasar a `"Enviado"` si está en el estado correcto.
+
+---
+
+### **📍 1.3 Lenguaje Ubicuo (Ubiquitous Language)** 🗣️
+💡 **Todos los que trabajan en el proyecto (programadores, diseñadores y expertos del negocio) deben usar el mismo lenguaje**.
+
+Ejemplo:
+- El **experto en la tienda** dice: "Un pedido puede estar Pendiente, Enviado o Entregado".
+- El **programador** crea la clase `Pedido` con un `EstadoPedido` que puede ser `"PENDIENTE"`, `"ENVIADO"` o `"ENTREGADO"`.
+
+✅ **Esto evita confusión y hace que todos entiendan el negocio de la misma forma**.
+
+---
+
+## **📌 2️⃣ Elementos Principales de DDD** 🏗️
+
+DDD divide la aplicación en varias **capas y componentes**, para que el código sea más organizado y escalable.
+
+### **📍 2.1 Entidades 📦 (Entities)**
+💡 **Objetos con identidad única que cambian con el tiempo.**
+
+Ejemplo:
+- Un **Pedido** tiene un `ID único` y cambia de estado con el tiempo.
+
+```java
+public class Pedido {
+    private String id;
+    private EstadoPedido estado;
+
+    public Pedido(String id) {
+        this.id = id;
+        this.estado = EstadoPedido.PENDIENTE;
     }
 }
 ```
-📌 **Repositorio (`PedidoRepository.java`)**
+
+---
+
+### **📍 2.2 Value Objects 🎭**
+💡 **Objetos que representan valores, pero no tienen identidad única.**
+
+Ejemplo:
+- Un **Precio** con su valor y moneda es un `Value Object`.
+
 ```java
-@Repository
-public interface PedidoRepository extends JpaRepository<Pedido, Long> {
+public class Precio {
+    private final double valor;
+    private final String moneda;
+
+    public Precio(double valor, String moneda) {
+        this.valor = valor;
+        this.moneda = moneda;
+    }
 }
 ```
-✅ **Siempre usamos `PedidoRepository` para modificar el agregado.**
+✅ Si tienes dos precios con `10 EUR`, no necesitas diferenciarlos porque representan lo mismo.
+
+---
+
+### **📍 2.3 Agregados 📚 (Aggregates)**
+💡 **Conjunto de entidades y objetos de valor que se comportan como una unidad.**
+
+Ejemplo:
+- Un **Pedido** tiene **Productos**, pero los productos **no pueden cambiarse directamente**, sino solo a través del `Pedido`.
+
+```java
+public class Pedido {
+    private String id;
+    private List<Producto> productos = new ArrayList<>();
+
+    public void agregarProducto(Producto producto) {
+        productos.add(producto);
+    }
+}
+```
+✅ **Pedido** es el **agregado**, y **Producto** es parte del agregado.
+
+---
+
+### **📍 2.4 Repositorios 📂 (Repositories)**
+💡 **Se encargan de guardar y recuperar entidades.**
+
+```java
+public interface PedidoRepositorio {
+    Pedido buscarPorId(String id);
+    void guardar(Pedido pedido);
+}
+```
+✅ **Esto permite separar la lógica de negocio de la base de datos**.
+
+---
+
+### **📍 2.5 Servicios de Dominio ⚙️ (Domain Services)**
+💡 **Lógica del negocio que no pertenece a una sola entidad.**
+
+Ejemplo:  
+Un **descuento** se aplica a un `Pedido`, pero el descuento **no pertenece a un solo producto o cliente**, sino que es una regla de negocio.
+
+```java
+public class ServicioDescuento {
+    public double calcularDescuento(Pedido pedido) {
+        if (pedido.getEstado() == EstadoPedido.PENDIENTE) {
+            return 10.0; // Descuento del 10%
+        }
+        return 0;
+    }
+}
+```
+✅ **Separamos la lógica del negocio en un servicio independiente.**
 
 ---
 
@@ -198,5 +279,50 @@ public class PedidoController {
     }
 }
 ```
+
+
+
+
+## **📌 3️⃣ Arquitectura Hexagonal en DDD** 🏛️
+
+DDD funciona bien con **Arquitectura Hexagonal (Ports & Adapters)**, que separa la lógica del negocio de la infraestructura.
+
+📌 **Ejemplo de capas en DDD + Hexagonal:**
+
+```
+┌───────────────────────────────────────┐
+│               API (REST)               │  <-- Controlador
+├───────────────────────────────────────┤
+│           Aplicación (Use Cases)       │  <-- Casos de Uso
+├───────────────────────────────────────┤
+│           Dominio (Reglas de Negocio)  │  <-- Entidades, Servicios, Repositorios
+├───────────────────────────────────────┤
+│       Infraestructura (Base de Datos)  │  <-- Implementación de Repositorios
+└───────────────────────────────────────┘
+```
+
+✅ **Ventajas:**
+- 🎯 **El negocio no depende de la base de datos.**
+- 🔄 **Puedes cambiar la API (REST, GraphQL) sin afectar la lógica.**
+- 🔌 **Puedes cambiar la base de datos sin cambiar el negocio.**
+
+---
+
+## **📌 4️⃣ Resumen de DDD** 🎯
+
+| Concepto          | Explicación |
+|------------------|------------|
+| **Dominio**       | El problema real que resuelve la aplicación. |
+| **Lenguaje Ubicuo** | Todos los equipos usan el mismo lenguaje del negocio. |
+| **Entidades**      | Objetos con identidad única y cambios en el tiempo. |
+| **Value Objects**  | Objetos sin identidad, solo valores. |
+| **Agregados**     | Conjunto de entidades tratadas como una sola unidad. |
+| **Repositorios**   | Manejan la persistencia de entidades. |
+| **Servicios de Dominio** | Lógica de negocio fuera de las entidades. |
+
+✅ **DDD ayuda a crear software más claro, escalable y alineado con el negocio.**
+
+---
+
 
 Finalmente! En esta misma carpeta tienes un ejemplo de proyecto con DDD en Java con Spring Boot. 🚀

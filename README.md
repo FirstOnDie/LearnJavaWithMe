@@ -51,6 +51,7 @@ Domina Java con técnicas y patrones avanzados.
 
 - 🔹 [Spring Boot](Markdowns/Spring/Springboot.md)
 - 🔹 [Autenticación y Autorización con Spring Security](Authentication-Authorization)
+- 🔹 [Programación Reactiva con Spring WebFlux](Markdowns/Spring/Springwebflux.md)
 
 📌 **Microservicios y APIs REST:**  
 ✔ Spring Boot + Spring Data JPA  
@@ -75,6 +76,8 @@ Domina Java con técnicas y patrones avanzados.
 - 🔹 [Logging eficiente](Markdowns/BestPractices/Logging.md)
 - 🔹 [Uso de Schedulers](Markdowns/BestPractices/Schedulers.md)
 - 🔹 [Evitar `NullPointerException`](Markdowns/BestPractices/NullPointerException.md)
+- 🔹 [Principios SOLID](Markdowns/Java/solid.md)
+- 🔹 [Test-Driven Design (TDD)](Markdowns/Java/testdrivendesign.md)
 - 🔹 [Preguntas de entrevistas](Markdowns/Java/entrevistas.md)
 
 ---
@@ -84,5 +87,36 @@ Domina Java con técnicas y patrones avanzados.
 
 - 🔹 [Arquitectura Hexagonal](HexagonalEstructure)
 - 🔹 [Domain-Driven Design (DDD)](DDDEstructure)
+
+---
+## **📌 7️⃣ Comunicación y colas en Java **
+📌 **Tipos de colas que podemos utilizar en Java con distintos frameworks.**
+
+- 🔹 [Apache Kafka](Markdowns/queues/kafka.md)
+- 🔹 [RabbitMQ](Markdowns/queues/rabbitmq.md)
+- 🔹 [ActiveMQ](Markdowns/queues/activemq.md)
+
+---
+
+## **📌 8️⃣ Despliegues en Java **
+📌 **Todo lo relacionado con los despliegues! Deberían ser cosas de los DevOps, pero nunca está de más saber un poquito. 😄**
+
+
+- 🔹 [Docker](Markdowns/devops/docker.md)
+- 🔹 [Kubernetes](Markdowns/devops/kubernetes.md)
+- 🔹 [ArgoCD](Markdowns/devops/argocd.md)
+- 🔹 [SonarQube y SonarCloud](Markdowns/devops/sonar.md)
+- 🔹 [Jenkins](Markdowns/devops/jenkins.md)
+- 🔹 [Helm](Markdowns/devops/helm.md)
+
+---
+
+## **📌 8️⃣ La nube para Java **
+📌 **Vamos a ver cosillas de la nube, pero en el ámbito de la programación en java.**
+
+
+- 🔹 [AWS](Markdowns/cloud/aws.md)
+- 🔹 [Azure](Markdowns/cloud/azure.md)
+- 🔹 [Google Cloud](Markdowns/cloud/google.md)
 
 ---
