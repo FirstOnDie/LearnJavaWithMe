@@ -43,6 +43,12 @@ Domina Java con técnicas y patrones avanzados.
 - 🔹 [Lambdas](Markdowns/Java/lambdas.md)
 - 🔹 [Concurrencia y Multithreading](Markdowns/Java/concurrenciaMultithreading.md)
 - 🔹 [Hibernate y JPA](Markdowns/Java/hibernate.md)
+- 🔹 [GraalVM](Markdowns/Java/graalvm.md)
+- 🔹 [Dapr](Markdowns/Java/dapr.md)
+- 🔹 [CQRS y Event Sourcing con Axon Framework](Markdowns/Java/cqrsaxon.md)
+- 🔹 [Spring Native](Markdowns/Java/springnative.md)
+- 🔹 [WebAssembly](Markdowns/Java/webassembly.md)
+- 🔹 [Web3 y Blockchain](Markdowns/Java/web3.md)
 
 ---
 
