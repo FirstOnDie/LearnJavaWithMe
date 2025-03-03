@@ -50,6 +50,14 @@ Domina Java con técnicas y patrones avanzados.
 - 🔹 [WebAssembly](Markdowns/Java/webassembly.md)
 - 🔹 [Web3 y Blockchain](Markdowns/Java/web3.md)
 
+📌 **Entrevistas y preguntas avanzadas:**
+- 🔹 [Entrevista sobre Java Avanzado](entrevistas/advancedjavaenterview.md)
+- 🔹 [Entrevista sobre Spring](entrevistas/springenterview.md)
+- 🔹 [Entrevista sobre Versiones](entrevistas/versionsenterview.md)
+- 🔹 [Entrevista sobre Buenas Prácticas](entrevistas/buenaspracticasenterview.md)
+- 🔹 [Entrevista sobre Arquitecturas](entrevistas/arquitecturasenterview.md)
+- 🔹 [Entrevista sobre Comunicación y colas](entrevistas/comunicationqueues.md)
+
 ---
 
 ## **📌 3️⃣ Spring y Frameworks**
@@ -83,8 +91,8 @@ Domina Java con técnicas y patrones avanzados.
 - 🔹 [Uso de Schedulers](Markdowns/BestPractices/Schedulers.md)
 - 🔹 [Evitar `NullPointerException`](Markdowns/BestPractices/NullPointerException.md)
 - 🔹 [Principios SOLID](Markdowns/Java/solid.md)
-- 🔹 [Test-Driven Design (TDD)](Markdowns/Java/testdrivendesign.md)
-- 🔹 [Preguntas de entrevistas](Markdowns/Java/entrevistas.md)
+- 🔹 [Concurrencia en Java](Markdowns/BestPractices/Concurrencia.md)
+- 🔹 [Preguntas de entrevistas Generales](Markdowns/Java/entrevistas.md)
 
 ---
 
@@ -93,6 +101,8 @@ Domina Java con técnicas y patrones avanzados.
 
 - 🔹 [Arquitectura Hexagonal](HexagonalEstructure)
 - 🔹 [Domain-Driven Design (DDD)](DDDEstructure)
+- 🔹 [Event-Driven Architecture (EDA)](Markdowns/Java/edastructure.md)
+- 🔹 [Test-Driven Design (TDD)](Markdowns/Java/testdrivendesign.md)
 
 ---
 ## **📌 7️⃣ Comunicación y colas en Java **
@@ -122,7 +132,19 @@ Domina Java con técnicas y patrones avanzados.
 
 
 - 🔹 [AWS](Markdowns/cloud/aws.md)
+  -  🔹 [8 servicios de AWS utiles como programador JAVA](Markdowns/Java/AWS.md)
 - 🔹 [Azure](Markdowns/cloud/azure.md)
 - 🔹 [Google Cloud](Markdowns/cloud/google.md)
+
+---
+
+
+## **📌 8️⃣ Gestión de equipos y Líder técnico **
+📌 **Puntos a tener en cuenta para dar un pasito más y gestionar equipos.**
+
+
+- 🔹 [Metodologias Agile](Markdowns/teams/agile.md)
+- 🔹 [Liderazgo Técnico](Markdowns/teams/techlead.md)
+
 
 ---
